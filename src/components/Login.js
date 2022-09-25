@@ -1,48 +1,59 @@
 import React, { Fragment, useState } from "react";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    userName: "",
-    password: "",
+    UserName: "",
+    Password: "",
   });
 
-  const { userName, password } = inputs;
+  const { UserName, Password } = inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
-    console.log(e);
+    // console.log(e);
   };
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
     // backend
-    // try {
-    //   const body = { email, password };
-    //   const response = await fetch(
-    //     "http://localhost:5000/authentication/login",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-type": "application/json",
-    //       },
-    //       body: JSON.stringify(body),
-    //     }
-    //   );
+    try {
+      const body = { UserName, Password };
 
-    //   const parseRes = await response.json();
+      // console.log(body.UserName);
+      // console.log(body.Password);
 
-    //   if (parseRes.jwtToken) {
-    //     localStorage.setItem("token", parseRes.jwtToken);
-    //     setAuth(true);
-    //     toast.success("Logged in Successfully");
-    //   } else {
-    //     setAuth(false);
-    //     toast.error(parseRes);
-    //   }
-    // } catch (err) {
-    //   console.error(err.message);
-    // }
+      const response = await fetch(
+        "http://192.168.0.100:90/token",
+        {
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },    
+          body: new URLSearchParams({
+            'username': body.UserName,
+            'password': body.Password,
+            'grant_type': 'password'
+          })
+        }
+      );
+
+      const parseRes = await response.json();  // token chhe aa var ma
+      console.log(parseRes);
+            
+      
+      if (parseRes.token) {
+        // localStorage.setItem("token", parseRes.jwtToken);
+        setAuth(true);
+        console.log(parseRes);
+        toast.success("Logged in Successfully");
+      } else {
+        setAuth(false);
+        toast.error(parseRes);
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
@@ -51,8 +62,8 @@ const Login = ({ setAuth }) => {
       <form onSubmit={onSubmitForm}>
         <input
           type="text"
-          name="userName"
-          value={userName}
+          name="UserName"
+          value={UserName}
           placeholder="User Name"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
@@ -60,15 +71,15 @@ const Login = ({ setAuth }) => {
 
         <input
           type="text"
-          name="password"
-          value={password}
+          name="Password"
+          value={Password}
           placeholder="Password"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
       </form>
-      <button onClick={() => setAuth(true)}>Authenticate</button>
+      {/* <button onClick={() => setAuth(true)}>Authenticate</button> */}
     </Fragment>
   );
 };
