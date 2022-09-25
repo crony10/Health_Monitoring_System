@@ -16,68 +16,56 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 function App() {
-  const [isAuthenticated, setIsauthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const setAuth = (boolean) => {
+    setIsAuthenticated(boolean);
+  };
   return (
     <Fragment>
-      <Router>
-        <div className="container">
-          {/* <Routes>
-            <Route
-              path="/dashboard"
-              element={<Dashboard />}
-            />
-            <Route
-              path="/login"
-              element={!isAuthenticated?(
-                <Login/>
-              ):(
-                <Redirect to="/dashboard"/>
-              )
-            }
-              // render={props=><Login/> }
-            />
-            <Route
-              path="/register"
-              element={<Register />}
-            />
-          </Routes> */}
-          <Switch>
-            <Route
-              exact
-              path="/login"
-              render={props =>
-                !isAuthenticated ? (
-                  <Login {...props}/>
-                ) : (
-                  <Redirect to="/dashboard" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/register"
-              render={props =>
-                !isAuthenticated ? (
-                  <Register {...props}/>
-                ) : (
-                  <Redirect to="/dashboard" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/dashboard"
-              render={props =>
-                isAuthenticated ? (
-                  <Dashboard {...props}/>
-                ) : (
-                  <Redirect to="/login" />
-                )
-              }
-            />
-          </Switch>
-        </div>
-      </Router>
+      {/* <div style={{
+            background: "#41D69B",
+          }}> */}
+        <Router>
+          <div className="container">
+            <Switch>
+              <Route
+                exact
+                path="/login"
+                render={(props) =>
+                  !isAuthenticated ? (
+                    <Login {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/dashboard" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/register"
+                render={(props) =>
+                  !isAuthenticated ? (
+                    <Register />
+                  ) : (
+                    <Redirect to="/dashboard" setAuth={setAuth} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/dashboard"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <Dashboard {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/login" />
+                  )
+                }
+              />
+            </Switch>
+          </div>
+        </Router>
+      {/* </div> */}
     </Fragment>
   );
 }
