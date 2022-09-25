@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from "react";
-// import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Login = ({ setAuth }) => {
+
+  const notify = () => toast("Wow so easy !");
   const [inputs, setInputs] = useState({
     userName: "",
     password: "",
@@ -14,6 +17,15 @@ const Login = ({ setAuth }) => {
     console.log(e);
   };
   const onSubmitForm = async (e) => {
+    // this is basic toast
+    // toast("Wow so easy !");
+    
+    // this is modified toast, more on here:- https://fkhadra.github.io/react-toastify/positioning-toast
+    // toast.success("Success Notification !", {
+    //   position: toast.POSITION.TOP_CENTER
+    // });
+
+
     e.preventDefault();
 
     // backend
@@ -44,6 +56,9 @@ const Login = ({ setAuth }) => {
     //   console.error(err.message);
     // }
   };
+  // function toastFun(){
+  //   toast.success("Logged in Successfully");
+  // }
 
   return (
     <Fragment>
@@ -69,6 +84,9 @@ const Login = ({ setAuth }) => {
         <button className="btn btn-success btn-block">Submit</button>
       </form>
       <button onClick={() => setAuth(true)}>Authenticate</button>
+
+      {/* <button onClick={notify}>Notify !</button>
+      <ToastContainer /> */}
     </Fragment>
   );
 };

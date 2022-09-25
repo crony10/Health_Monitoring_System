@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
+
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 import React, { Fragment, useState } from "react";
 
 import {
@@ -14,6 +17,9 @@ import {
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
+
+
+// toast.configure();
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -65,6 +71,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+        <ToastContainer />
       {/* </div> */}
     </Fragment>
   );
