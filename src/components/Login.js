@@ -24,7 +24,7 @@ const Login = ({ setAuth }) => {
       // console.log(body.Password);
 
       const response = await fetch(
-        "http://192.168.0.100:90/token",
+        "https://hmsapis1.azurewebsites.net/token",
         {
           method: 'POST',
           headers:{
@@ -46,10 +46,16 @@ const Login = ({ setAuth }) => {
         // localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
         console.log(parseRes);
-        toast.success("Logged in Successfully");
+        // toast.success("Logged in Successfully");
+        toast.success("Logged in Successfully", {
+            position: toast.POSITION.TOP_CENTER
+          });
       } else {
         setAuth(false);
-        toast.error(parseRes);
+        // toast.error(parseRes);
+        toast.error(parseRes, {
+            position: toast.POSITION.TOP_CENTER
+          });
       }
     } catch (err) {
       console.error(err.message);

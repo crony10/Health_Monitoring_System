@@ -33,7 +33,7 @@ const Register = ({ setAuth }) => {
       
       const body = {HospitalName, HospitalContactNo, HospitalEmailId, UserName, Password}
 
-      const response = await fetch("http://192.168.0.100:90/api/WebAppApis/UserRegistration", {
+      const response = await fetch("https://hmsapis1.azurewebsites.net/api/WebAppApis/UserRegistration", {
         method: "POST",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify(body)
@@ -50,7 +50,10 @@ const Register = ({ setAuth }) => {
       {
         // localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Register Successfully");
+        // toast.success("Register Successfully");
+        toast.success("Register Successfully", {
+            position: toast.POSITION.TOP_CENTER
+          });
       } 
       else 
       {
