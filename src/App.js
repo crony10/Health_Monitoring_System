@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { ToastContainer } from "react-toastify";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import {
   BrowserRouter as Router,
@@ -28,6 +28,8 @@ function App() {
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
+
+  
   return (
     <Fragment>
       {/* <div style={{

@@ -43,17 +43,17 @@ const Register = ({ setAuth }) => {
       // console.log(parseRes);
 
       const parseRes = await response.json();      
-      console.log(parseRes);
+      // console.log(parseRes);
       // toast.success("Register Successfully");
       // setAuth(true);
       if (parseRes === "Sucess") 
       {
-        // localStorage.setItem("token", parseRes.jwtToken);
-        setAuth(true);
+        console.log(parseRes+"HELLO");
         // toast.success("Register Successfully");
         toast.success("Register Successfully", {
-            position: toast.POSITION.TOP_CENTER
-          });
+          position: toast.POSITION.TOP_CENTER
+        });
+        setAuth(true);
       } 
       else 
       {
