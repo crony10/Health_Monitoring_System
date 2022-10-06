@@ -29,6 +29,21 @@ function App() {
     setIsAuthenticated(boolean);
   };
 
+  const isVerify=()=>{
+    const items = JSON.parse(localStorage.getItem('token'));
+    
+    if(items){
+      setAuth(true);
+    }
+    else{
+      setAuth(false);
+    }
+  }
+
+  useEffect(()=>{
+    isVerify();
+  },[])
+
   
   return (
     <Fragment>

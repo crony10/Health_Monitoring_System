@@ -1,10 +1,10 @@
-import React, { Fragment, useState } from "react";
-import { toast } from "react-toastify";
+import React, { Fragment, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    UserName: "",
-    Password: "",
+    UserName: '',
+    Password: '',
   });
 
   const { UserName, Password } = inputs;
@@ -13,6 +13,10 @@ const Login = ({ setAuth }) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
     // console.log(e);
   };
+  // const setLoginAuth = (auth)=>{
+  //   console.log(auth);
+  //   setAuth.setAuth(auth);
+  // }
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -23,39 +27,40 @@ const Login = ({ setAuth }) => {
       // console.log(body.UserName);
       // console.log(body.Password);
 
-      const response = await fetch(
-        "https://hmsapis1.azurewebsites.net/token",
-        {
-          method: 'POST',
-          headers:{
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },    
-          body: new URLSearchParams({
-            'username': body.UserName,
-            'password': body.Password,
-            'grant_type': 'password'
-          })
-        }
-      );
+      const response = await fetch('https://hmsapis1.azurewebsites.net/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          username: body.UserName,
+          password: body.Password,
+          grant_type: 'password',
+        }),
+      });
 
-      const parseRes = await response.json();  // token chhe aa var ma
+      const parseRes = await response.json(); // token chhe aa var ma
       console.log(parseRes);
-            
-      
-      if (parseRes.token) {
+
+      if (parseRes.access_token) {
         // localStorage.setItem("token", parseRes.jwtToken);
-        setAuth(true);
+        // setLoginAuth(true);
+        // setAuth(true);
         console.log(parseRes);
         // toast.success("Logged in Successfully");
-        toast.success("Logged in Successfully", {
-            position: toast.POSITION.TOP_CENTER
-          });
+        toast.success('Logged in Successfully', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+
+        localStorage.setItem('token', JSON.stringify('this is token'));
+        window.location.reload(false);
       } else {
-        setAuth(false);
+        // setLoginAuth(false);
+        // setAuth(false);
         // toast.error(parseRes);
         toast.error(parseRes, {
-            position: toast.POSITION.TOP_CENTER
-          });
+          position: toast.POSITION.TOP_CENTER,
+        });
       }
     } catch (err) {
       console.error(err.message);

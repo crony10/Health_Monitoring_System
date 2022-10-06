@@ -24,6 +24,11 @@ const Register = ({ setAuth }) => {
     // console.log(e);
   }
 
+  const setRegisterAuth = (auth)=>{
+    console.log(auth);
+    setAuth(auth);
+  }
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -53,11 +58,14 @@ const Register = ({ setAuth }) => {
         toast.success("Register Successfully", {
           position: toast.POSITION.TOP_CENTER
         });
-        setAuth(true);
+        // setRegisterAuth(true);
+        localStorage.setItem('token', JSON.stringify('this is token'));
+        window.location.reload(false);
+
       } 
       else 
       {
-        setAuth(false);
+        // setRegisterAuth(false);
         toast.error(parseRes);
       }
     } catch (err) {
