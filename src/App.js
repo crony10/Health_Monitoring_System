@@ -1,10 +1,11 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
-
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import { ToastContainer } from "react-toastify";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import {
   BrowserRouter as Router,
@@ -27,6 +28,23 @@ function App() {
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
+
+  const isVerify=()=>{
+    const items = JSON.parse(localStorage.getItem('token'));
+    
+    if(items){
+      setAuth(true);
+    }
+    else{
+      setAuth(false);
+    }
+  }
+
+  useEffect(()=>{
+    isVerify();
+  },[])
+
+  
   return (
     <Fragment>
       {/* <div style={{
