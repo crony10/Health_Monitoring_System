@@ -125,10 +125,10 @@ const Register = ({ setAuth }) => {
         />
         <button className="btn btn-success btn-block">Submit</button>
         <div>
-          <Link to="/login">login</Link>
+          <Link to="/signup_login/login">login</Link>
         </div>
         <div>
-          <Link to="/">home page</Link>
+          <Link to="/signup_login/">home page</Link>
         </div>
       </form>
     </Fragment>

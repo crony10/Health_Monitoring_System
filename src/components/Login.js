@@ -92,9 +92,9 @@ const Login = ({ setAuth }) => {
         />
         <button className="btn btn-success btn-block">Submit</button>
         <div>
-          <Link to="/register">register</Link>
+          <Link to="/signup_login/register">register</Link>
         </div>
-        <Link  to="/" >home page</Link>
+        <Link  to="/signup_login/" >home page</Link>
       </form>
       {/* <button onClick={() => setAuth(true)}>Authenticate</button> */}
     </Fragment>

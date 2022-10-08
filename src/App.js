@@ -58,7 +58,7 @@ function App() {
                 !isAuthenticated ? (
                   <Landing {...props}/>
                 ) : (
-                  <Redirect to="/dashboard" />
+                  <Redirect to="/signup_login/dashboard" />
                 )
               }
             />
@@ -69,7 +69,7 @@ function App() {
                 !isAuthenticated ? (
                   <Login {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/dashboard" />
+                  <Redirect to="/signup_login/dashboard" />
                 )
               }
             />
@@ -80,7 +80,7 @@ function App() {
                 !isAuthenticated ? (
                   <Register />
                 ) : (
-                  <Redirect to="/dashboard" setAuth={setAuth} />
+                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
                 )
               }
             />
@@ -91,7 +91,7 @@ function App() {
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/login" />
+                  <Redirect to="/signup_login/login" />
                 )
               }
             />
