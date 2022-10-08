@@ -6,8 +6,8 @@ const Landing = () => {
     return (
         <>
            
-            <Link  to="/signup_login/login" ><h4 style={{ color: '#6C63FF' }}>Sign in</h4></Link>
-            <Link  to="/signup_login/register" ><h4 style={{ color: '#6C63FF' }}>Register</h4></Link>
+            <Link  to="/signup_login/login" >Sign in</Link>
+            <div><Link  to="/signup_login/register" >Register</Link></div>
 
         </>
     );
