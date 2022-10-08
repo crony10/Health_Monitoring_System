@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from "react-router-dom";
+
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -89,6 +91,10 @@ const Login = ({ setAuth }) => {
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
+        <div>
+          <Link to="/register">register</Link>
+        </div>
+        <Link  to="/" >home page</Link>
       </form>
       {/* <button onClick={() => setAuth(true)}>Authenticate</button> */}
     </Fragment>

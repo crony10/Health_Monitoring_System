@@ -1,14 +1,14 @@
-import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { Fragment, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    HospitalName: "",
-    HospitalContactNo: "",
-    HospitalEmailId: "",
-    UserName: "",
-    Password: "",
+    HospitalName: '',
+    HospitalContactNo: '',
+    HospitalEmailId: '',
+    UserName: '',
+    Password: '',
   });
 
   const {
@@ -19,15 +19,15 @@ const Register = ({ setAuth }) => {
     Password,
   } = inputs;
 
-  const onChange = (e) =>{
+  const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
     // console.log(e);
-  }
+  };
 
-  const setRegisterAuth = (auth)=>{
+  const setRegisterAuth = (auth) => {
     console.log(auth);
     setAuth(auth);
-  }
+  };
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -35,43 +35,46 @@ const Register = ({ setAuth }) => {
     // Backend call by clicking submit button
 
     try {
-      
-      const body = {HospitalName, HospitalContactNo, HospitalEmailId, UserName, Password}
+      const body = {
+        HospitalName,
+        HospitalContactNo,
+        HospitalEmailId,
+        UserName,
+        Password,
+      };
 
-      const response = await fetch("https://hmsapis1.azurewebsites.net/api/WebAppApis/UserRegistration", {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify(body)
-      });
+      const response = await fetch(
+        'https://hmsapis1.azurewebsites.net/api/WebAppApis/UserRegistration',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        }
+      );
 
       // const parseRes = await response.json();
       // console.log(parseRes);
 
-      const parseRes = await response.json();      
+      const parseRes = await response.json();
       // console.log(parseRes);
       // toast.success("Register Successfully");
       // setAuth(true);
-      if (parseRes === "Sucess") 
-      {
-        console.log(parseRes+"HELLO");
+      if (parseRes === 'Sucess') {
+        console.log(parseRes + 'HELLO');
         // toast.success("Register Successfully");
-        toast.success("Register Successfully", {
-          position: toast.POSITION.TOP_CENTER
+        toast.success('Register Successfully', {
+          position: toast.POSITION.TOP_CENTER,
         });
         // setRegisterAuth(true);
         localStorage.setItem('token', JSON.stringify('this is token'));
         window.location.reload(false);
-
-      } 
-      else 
-      {
+      } else {
         // setRegisterAuth(false);
         toast.error(parseRes);
       }
     } catch (err) {
       console.log(err.message);
     }
-    
   };
 
   return (
@@ -121,8 +124,13 @@ const Register = ({ setAuth }) => {
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
+        <div>
+          <Link to="/login">login</Link>
+        </div>
+        <div>
+          <Link to="/">home page</Link>
+        </div>
       </form>
-      <Link to="/login">login</Link>
     </Fragment>
   );
 };
