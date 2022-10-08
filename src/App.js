@@ -47,6 +47,7 @@ function App() {
   
   return (
     <Fragment>
+      <h2>welcome to the app!</h2>
       {/* <div style={{
             background: "#41D69B",
           }}> */}
