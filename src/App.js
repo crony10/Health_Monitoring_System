@@ -78,7 +78,7 @@ function App() {
               path="/signup_login/register"
               render={(props) =>
                 !isAuthenticated ? (
-                  <Register />
+                  <Register {...props} setAuth={setAuth}/>
                 ) : (
                   <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
                 )
