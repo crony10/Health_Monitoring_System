@@ -82,7 +82,8 @@ const Login = ({ setAuth }) => {
             className="navbar-toggler ml-auto"
             type="button"
             data-toggle="collapse"
-            data-target="#navmenu"
+            data-bs-toggle="collapse"
+            href="#navmenu"
           >
             <span className="navbar-toggler-icon"></span>
           </button>

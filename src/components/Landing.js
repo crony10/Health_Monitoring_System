@@ -15,8 +15,9 @@ const Landing = () => {
           <button
             className="navbar-toggler ml-auto"
             type="button"
-            data-toggle="collapse"
-            data-target="#navmenu"
+            data-bs-toggle="collapse"
+            // data-target="#navmenu"
+            href="#navmenu"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -52,6 +53,7 @@ const Landing = () => {
         </div>
       </nav>
 
+      
       {/* Hero section */}
       <section className=" text-light p-5 p-lg-0 text-center text-sm-start">
         <div className="container">
