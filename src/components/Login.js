@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.jpg';
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -59,7 +60,7 @@ const Login = ({ setAuth }) => {
         // setLoginAuth(false);
         // setAuth(false);
         // toast.error(parseRes);
-        toast.error(parseRes, {
+        toast.error('User does not exist!', {
           position: toast.POSITION.TOP_CENTER,
         });
       }
@@ -70,7 +71,63 @@ const Login = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <h1 className="mt-5">Login</h1>
+      {/* Navigation bar */}
+      <nav className="navbar navbar-expand-sm navbar-light py-3">
+        <div className="container ">
+          <Link to="/" className="navbar-brand text-dark">
+            <img width="100px" src={logo} alt="logo" />
+          </Link>
+
+          <button
+            className="navbar-toggler ml-auto"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navmenu"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navmenu">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                {/* <Link to="/" className="nav-link text-dark">
+                  Home page
+                </Link> */}
+
+                <Link
+                  to="/"
+                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                  style={{
+                    background: '#35CBBD',
+                  }}
+                >
+                  Home page
+                </Link>
+              </li>
+              <li className="nav-item">
+                {/* <Link
+                  to="/signup_login/register/"
+                  className="nav-link text-dark"
+                >
+                  Register
+                </Link> */}
+
+                <Link
+                   to="/signup_login/register/"
+                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                  style={{
+                    background: '#35CBBD',
+                  }}
+                >
+                  Register
+                </Link>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <h1 className="mt-5 text-center">Login</h1>
       <form onSubmit={onSubmitForm}>
         <input
           type="text"
@@ -90,10 +147,10 @@ const Login = ({ setAuth }) => {
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
-        <div>
+        {/* <div>
           <Link to="/signup_login/register/">register</Link>
         </div>
-        <Link to="/">home page</Link>
+        <Link to="/">home page</Link> */}
       </form>
       {/* <button onClick={() => setAuth(true)}>Authenticate</button> */}
     </Fragment>

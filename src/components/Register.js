@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import logo from '../assets/logo.jpg';
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -52,25 +53,19 @@ const Register = ({ setAuth }) => {
         }
       );
 
-      // const parseRes = await response.json();
-      // console.log(parseRes);
-
       const parseRes = await response.json();
-      // console.log(parseRes);
-      // toast.success("Register Successfully");
-      // setAuth(true);
       if (parseRes === 'Sucess') {
         console.log(parseRes + 'HELLO');
-        // toast.success("Register Successfully");
         toast.success('Register Successfully', {
           position: toast.POSITION.TOP_CENTER,
         });
-        // setRegisterAuth(true);
         localStorage.setItem('token', JSON.stringify('this is token'));
         window.location.reload(false);
       } else {
-        // setRegisterAuth(false);
-        toast.error(parseRes);
+        toast.error('User already exist!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        // toast.error(parseRes);
       }
     } catch (err) {
       console.log(err.message);
@@ -79,6 +74,59 @@ const Register = ({ setAuth }) => {
 
   return (
     <Fragment>
+      {/* Navigation bar */}
+      <nav className="navbar navbar-expand-sm navbar-light py-3">
+        <div className="container ">
+          <Link to="/" className="navbar-brand text-dark">
+            <img width="100px" src={logo} alt="logo" />
+          </Link>
+
+          <button
+            className="navbar-toggler ml-auto"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navmenu"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navmenu">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                {/* <Link to="/" className="nav-link text-dark">
+                  Home page
+                </Link> */}
+
+
+                <Link
+                  to="/"
+                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                  style={{
+                    background: '#35CBBD',
+                  }}
+                >
+                  Home page
+                </Link>
+              </li>
+              <li className="nav-item">
+                {/* <Link to="/signup_login/login/" className="nav-link text-dark">
+                  Login
+                </Link> */}
+
+                <Link
+                   to="/signup_login/login/"
+                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                  style={{
+                    background: '#35CBBD',
+                  }}
+                >
+                  Login
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <h1 className="mt-5 text-center">Register</h1>
       <form onSubmit={onSubmitForm}>
         <input
@@ -124,12 +172,7 @@ const Register = ({ setAuth }) => {
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
-        <div>
-          <Link to="/signup_login/login/">login</Link>
-        </div>
-        <div>
-          <Link to="/">home page</Link>
-        </div>
+        
       </form>
     </Fragment>
   );
