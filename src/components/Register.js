@@ -128,7 +128,7 @@ const Register = ({ setAuth }) => {
           <Link to="/signup_login/login/">login</Link>
         </div>
         <div>
-          <Link to="/signup_login/">home page</Link>
+          <Link to="/">home page</Link>
         </div>
       </form>
     </Fragment>
