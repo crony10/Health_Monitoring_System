@@ -64,34 +64,34 @@ function App() {
             />
             <Route
               exact
-              path="/signup_login/login"
+              path="/signup_login/login/"
               render={(props) =>
                 !isAuthenticated ? (
                   <Login {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/signup_login/dashboard" setAuth={setAuth}/>
+                  <Redirect to="/signup_login/dashboard/" setAuth={setAuth}/>
                 )
               }
             />
             <Route
               exact
-              path="/signup_login/register"
+              path="/signup_login/register/"
               render={(props) =>
                 !isAuthenticated ? (
                   <Register {...props} setAuth={setAuth}/>
                 ) : (
-                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                  <Redirect to="/signup_login/dashboard/" setAuth={setAuth} />
                 )
               }
             />
             <Route
               exact
-              path="/signup_login/dashboard"
+              path="/signup_login/dashboard/"
               render={(props) =>
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/signup_login/login" />
+                  <Redirect to="/signup_login/login/" />
                 )
               }
             />
