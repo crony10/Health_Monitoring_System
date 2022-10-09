@@ -69,7 +69,7 @@ function App() {
                 !isAuthenticated ? (
                   <Login {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/signup_login/dashboard/" setAuth={setAuth}/>
+                  <Redirect to="/signup_login/dashboard" setAuth={setAuth}/>
                 )
               }
             />
@@ -80,7 +80,7 @@ function App() {
                 !isAuthenticated ? (
                   <Register {...props} setAuth={setAuth}/>
                 ) : (
-                  <Redirect to="/signup_login/dashboard/" setAuth={setAuth} />
+                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
                 )
               }
             />
@@ -91,7 +91,7 @@ function App() {
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/signup_login/login/" />
+                  <Redirect to="/signup_login/login" />
                 )
               }
             />
