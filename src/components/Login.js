@@ -114,7 +114,7 @@ const Login = ({ setAuth }) => {
                 </Link> */}
 
                 <Link
-                   to="/signup_login/register/"
+                  to="/signup_login/register/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',
@@ -122,14 +122,14 @@ const Login = ({ setAuth }) => {
                 >
                   Register
                 </Link>
-                
               </li>
             </ul>
           </div>
         </div>
       </nav>
       <h1 className="mt-5 text-center">Login</h1>
-      <form onSubmit={onSubmitForm}>
+      <form onSubmit={onSubmitForm} class="was-validated">
+        
         <input
           type="text"
           name="UserName"
@@ -137,6 +137,7 @@ const Login = ({ setAuth }) => {
           placeholder="User Name"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
+          required
         />
 
         <input
@@ -146,6 +147,7 @@ const Login = ({ setAuth }) => {
           placeholder="Password"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
+          required
         />
         <button className="btn btn-success btn-block">Submit</button>
         {/* <div>
