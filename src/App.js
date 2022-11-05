@@ -19,6 +19,7 @@ import {
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
+import Temp from './components/temp';
 
 // toast.configure();
 
@@ -49,7 +50,7 @@ function App() {
             background: "#41D69B",
           }}> */}
       <Router>
-        <div className="container">
+        <>
           <Switch>
             <Route
               exact
@@ -57,6 +58,17 @@ function App() {
               render={(props) =>
                 !isAuthenticated ? (
                   <Landing {...props}/>
+                ) : (
+                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/temp"
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Temp {...props}/>
                 ) : (
                   <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
                 )
@@ -95,8 +107,9 @@ function App() {
                 )
               }
             />
+            
           </Switch>
-        </div>
+          </>
       </Router>
       <ToastContainer />
       {/* </div> */}

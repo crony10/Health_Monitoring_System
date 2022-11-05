@@ -1,23 +1,17 @@
-import React, { Fragment } from "react";
-// import { toast } from "react-toastify";
-import Card from 'react-bootstrap/Card';
+import React, { Fragment } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+// import { toast } from "react-toastify";
+import Card from 'react-bootstrap/Card';
 
-
-const removeToken=()=>{
-  localStorage.removeItem('token');
-  window.location.reload(false);
-}
-const Dashboard = ({setAuth}) => {
-
+const Temp = ({ setAuth }) => {
   const [temp, setTemp] = useState(0);
   const [avgHr, setAvgHr] = useState(0);
   const [spO, setSpo] = useState(0);
-    const removeToken = () => {
-      localStorage.removeItem('token');
-      window.location.reload(false);
-    };
+  //   const removeToken = () => {
+  //     localStorage.removeItem('token');
+  //     window.location.reload(false);
+  //   };
 
   // Backend call for temperature
   const temperature = (e) => {
@@ -47,14 +41,8 @@ const Dashboard = ({setAuth}) => {
     temperature();
   }, []);
 
-
-
-  
   return (
     <>
-      <h1>Dashboard</h1>
-      <button onClick={()=>removeToken()}>Logout</button>
-
       <div
         style={{
           background: '#F9F9FF',
@@ -217,4 +205,4 @@ const Dashboard = ({setAuth}) => {
   );
 };
 
-export default Dashboard;
+export default Temp;
