@@ -20,7 +20,8 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import Temp from './components/temp';
-
+import AddPatients from './components/AddPatients';
+import ShowPatients from './components/ShowPatients';
 // toast.configure();
 
 function App() {
@@ -102,6 +103,28 @@ function App() {
               render={(props) =>
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/signup_login/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/signup_login/dashboard/AddPatients"
+              render={(props) =>
+                isAuthenticated ? (
+                  <AddPatients {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/signup_login/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/signup_login/dashboard/ShowPatients"
+              render={(props) =>
+                isAuthenticated ? (
+                  <ShowPatients {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/signup_login/login" />
                 )

@@ -1,35 +1,25 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import logo from '../assets/logo.jpg';
-import Dashboard from './Dashboard';
 
-const Register = ({ setAuth }) => {
+const AddPatients = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    HospitalName: '',
-    HospitalContactNo: '',
-    HospitalEmailId: '',
-    UserName: '',
-    Password: '',
+    PatientName: '',
+    ContactNo: '',
+    ChannelId: '',
   });
 
-  const {
-    HospitalName,
-    HospitalContactNo,
-    HospitalEmailId,
-    UserName,
-    Password,
-  } = inputs;
+  const { PatientName, ContactNo, ChannelId } = inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
     // console.log(e);
   };
 
-  const setRegisterAuth = (auth) => {
-    console.log(auth);
-    setAuth(auth);
-  };
+  // const setRegisterAuth = (auth) => {
+  //   console.log(auth);
+  //   setAuth(auth);
+  // };
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -38,11 +28,9 @@ const Register = ({ setAuth }) => {
 
     try {
       const body = {
-        HospitalName,
-        HospitalContactNo,
-        HospitalEmailId,
-        UserName,
-        Password,
+        PatientName,
+        ContactNo,
+        ChannelId,
       };
 
       const response = await fetch(
@@ -73,19 +61,23 @@ const Register = ({ setAuth }) => {
     }
   };
 
+  const removeToken = () => {
+    localStorage.removeItem('token');
+    window.location.reload(false);
+  };
+
   return (
     <Fragment>
       {/* Navigation bar */}
       <nav className="navbar navbar-expand-sm navbar-light py-3">
         <div className="container ">
-          <Link to="/" className="navbar-brand text-dark">
-            <img width="100px" src={logo} alt="logo" />
-          </Link>
+          <h1>welcome ...</h1>
 
           <button
             className="navbar-toggler ml-auto"
             type="button"
             data-bs-toggle="collapse"
+            // data-target="#navmenu"
             href="#navmenu"
           >
             <span className="navbar-toggler-icon"></span>
@@ -94,90 +86,66 @@ const Register = ({ setAuth }) => {
           <div className="collapse navbar-collapse" id="navmenu">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                {/* <Link to="/" className="nav-link text-dark">
-                  Home page
-                </Link> */}
-
-
                 <Link
-                  to="/"
+                  to="/signup_login/dashboard/ShowPatients"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',
                   }}
                 >
-                  Home page
+                  Show Patient Detail
                 </Link>
+                {/* <Link to="/signup_login/login/" className="nav-link text-dark">Log in</Link> */}
               </li>
               <li className="nav-item">
-                {/* <Link to="/signup_login/login/" className="nav-link text-dark">
-                  Login
-                </Link> */}
-
-                <Link
-                   to="/signup_login/login/"
-                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                <button
                   style={{
                     background: '#35CBBD',
                   }}
+                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                  onClick={() => removeToken()}
                 >
-                  Login
-                </Link>
+                  Logout
+                </button>
+                {/* <Link to="/signup_login/register/" className="nav-link text-dark">Register</Link> */}
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <h1 className="mt-5 text-center">Register</h1>
+
+      {/* Form  */}
+      <h1 className="mt-5 text-center">Add Patients</h1>
       <form onSubmit={onSubmitForm}>
         <input
           type="text"
-          name="HospitalName"
-          value={HospitalName}
-          placeholder="Hospital Name"
+          name="PatientName"
+          value={PatientName}
+          placeholder="Patient Name"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
         <input
           type="text"
-          name="HospitalContactNo"
-          value={HospitalContactNo}
-          placeholder="Hospital Contact Number"
+          name="ContactNo"
+          value={ContactNo}
+          placeholder="Contact Number"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
         <input
           type="text"
-          name="HospitalEmailId"
-          value={HospitalEmailId}
-          placeholder="Hospital Email"
+          name="ChannelId"
+          value={ChannelId}
+          placeholder="Channel Id"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
 
-        <input
-          type="text"
-          name="UserName"
-          value={UserName}
-          placeholder="User Name"
-          onChange={(e) => onChange(e)}
-          className="form-control my-3"
-        />
-
-        <input
-          type="text"
-          name="Password"
-          value={Password}
-          placeholder="Password"
-          onChange={(e) => onChange(e)}
-          className="form-control my-3"
-        />
         <button className="btn btn-success btn-block">Submit</button>
-        
       </form>
-
     </Fragment>
   );
 };
 
-export default Register;
+export default AddPatients;
