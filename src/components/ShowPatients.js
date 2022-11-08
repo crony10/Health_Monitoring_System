@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
-const ShowPatients = ({ setAuth }) => {
+const ShowPatients = ({ setAuth, history }) => {
   const [temp, setTemp] = useState(0);
   const [avgHr, setAvgHr] = useState(0);
   const [spO, setSpo] = useState(0);
@@ -16,7 +16,6 @@ const ShowPatients = ({ setAuth }) => {
   });
   const { mono, pid } = inputs;
 
-
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
     // console.log(e);
@@ -24,54 +23,50 @@ const ShowPatients = ({ setAuth }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-
-    // const navigate = useHistory(); 
-    // history.push(path);
-
+    
+    // const navigate = useHistory();
 
     // setInputs('');
-    
+
     // Backend call by clicking submit button
-    
-    // try {
-    //   // const body = {
-    //   //   mono,
-    //   //   pid
-    //   // };
-      
-    //   // const response = await fetch(
-    //   //   'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
-    //   //   {
-    //   //     method: 'POST',
-    //   //     headers: { 'Content-Type': 'application/json' },
-    //   //     body: JSON.stringify(body),
-    //   //   }
-    //   //   );
-        
-    //   //   const parseRes = await response.json();
-    //   //   console.log(parseRes);
 
-    //   //   if (parseRes === 'Failed') {
-          
+    try {
+      const body = {
+        mono,
+        pid,
+      };
 
-    //   //     // toast.error('User does not exist!', {
-    //   //     //   position: toast.POSITION.TOP_CENTER,
-    //   //     // });
-      
-    //   //   } else {
-    //   //     console.log(parseRes + 'HELLO');
-    //   //     toast.success('Register Successfully', {
-    //   //       position: toast.POSITION.TOP_CENTER,
-    //   //     });
-    //   //     // e.target.reset();
-    //   //     setInputs({ PatientName: '', ContactNo: '' ,ChannelId:''});
-    //   //     // localStorage.setItem('token', JSON.stringify('this is token'));
-    //   //     // window.location.reload(false);
-    //   //   // toast.error(parseRes);
-    //   // }
-    // } catch (err) {
-    //   console.log(err.message);
-    // }
+      const response = await fetch(
+        'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const parseRes = await response.json();
+      console.log("logging response "+ parseRes.Message);
+
+      // if (parseRes.Message === "An error has occurred") {
+      //   toast.error('User does not exist!', {
+      //     position: toast.POSITION.TOP_CENTER,
+      //   });
+      // } else {
+      //   console.log(parseRes + 'HELLO');
+      //   toast.success('Register Successfully', {
+      //     position: toast.POSITION.TOP_CENTER,
+      //   });
+      //   // e.target.reset();
+      //   setInputs({ PatientName: '', ContactNo: '', ChannelId: '' });
+      //   // localStorage.setItem('token', JSON.stringify('this is token'));
+      //   // window.location.reload(false);
+      //   // toast.error(parseRes);
+      //   history.push('/signup_login/dashboard/ShowPatientDetails/');
+      // }
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   // Backend call for temperature
