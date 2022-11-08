@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
-import {useNavigate} from "react-router-dom"
+import { withRouter } from 'react-router-dom';
 
 const ShowPatients = ({ setAuth }) => {
   const [temp, setTemp] = useState(0);
@@ -25,8 +25,8 @@ const ShowPatients = ({ setAuth }) => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
-    const navigate = useNavigate(); 
-    navigate("/signup_login/dashboard/ShowPatientDetails/");
+    // const navigate = useHistory(); 
+    // history.push(path);
 
 
     // setInputs('');
@@ -51,7 +51,7 @@ const ShowPatients = ({ setAuth }) => {
     //   //   const parseRes = await response.json();
     //   //   console.log(parseRes);
 
-    //   //   if (parseRes === 'failed') {
+    //   //   if (parseRes === 'Failed') {
           
 
     //   //     // toast.error('User does not exist!', {
@@ -182,4 +182,4 @@ const ShowPatients = ({ setAuth }) => {
   );
 };
 
-export default ShowPatients;
+export default withRouter(ShowPatients);
