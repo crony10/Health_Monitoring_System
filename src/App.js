@@ -48,106 +48,107 @@ function App() {
 
   return (
     <Fragment>
-      {/* <div style={{
-            background: "#41D69B",
-          }}> */}
-      <Router>
-        <>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={(props) =>
-                !isAuthenticated ? (
-                  <Landing {...props}/>
-                ) : (
-                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/temp"
-              render={(props) =>
-                !isAuthenticated ? (
-                  <Temp {...props}/>
-                ) : (
-                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signup_login/login/"
-              render={(props) =>
-                !isAuthenticated ? (
-                  <Login {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/signup_login/dashboard" setAuth={setAuth}/>
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signup_login/register/"
-              render={(props) =>
-                !isAuthenticated ? (
-                  <Register {...props} setAuth={setAuth}/>
-                ) : (
-                  <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signup_login/dashboard/"
-              render={(props) =>
-                isAuthenticated ? (
-                  <Dashboard {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/signup_login/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signup_login/dashboard/AddPatients"
-              render={(props) =>
-                isAuthenticated ? (
-                  <AddPatients {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/signup_login/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signup_login/dashboard/ShowPatients/"
-              render={(props) =>
-                isAuthenticated ? (
-                  <ShowPatients {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/signup_login/login" />
-                )
-              }
-            />
+      {/* <div
+        style={{
+          background: '#dff6f4',
+        }}
+      > */}
+        <Router>
+          <>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={(props) =>
+                  !isAuthenticated ? (
+                    <Landing {...props} />
+                  ) : (
+                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/temp"
+                render={(props) =>
+                  !isAuthenticated ? (
+                    <Temp {...props} />
+                  ) : (
+                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/login/"
+                render={(props) =>
+                  !isAuthenticated ? (
+                    <Login {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/register/"
+                render={(props) =>
+                  !isAuthenticated ? (
+                    <Register {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/dashboard/"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <Dashboard {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/login" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/dashboard/AddPatients"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <AddPatients {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/login" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/dashboard/ShowPatients/"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <ShowPatients {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/login" />
+                  )
+                }
+              />
 
-            <Route
-              exact
-              path="/signup_login/dashboard/ShowPatientDetails/"
-              render={(props) =>
-                isAuthenticated ? (
-                  <ShowPatientDetails {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/signup_login/login" />
-                )
-              }
-            />
-            
-          </Switch>
+              <Route
+                exact
+                path="/signup_login/dashboard/ShowPatientDetails/"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <ShowPatientDetails {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/login" />
+                  )
+                }
+              />
+            </Switch>
           </>
-      </Router>
-      <ToastContainer />
+        </Router>
+        <ToastContainer />
       {/* </div> */}
     </Fragment>
   );

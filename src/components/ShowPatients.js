@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import showDetails from '../assets/showDetails.svg'
 
 const ShowPatients = ({ setAuth, history }) => {
   const [temp, setTemp] = useState(5);
@@ -140,8 +141,9 @@ const ShowPatients = ({ setAuth, history }) => {
       {/* Navigation bar */}
       <nav className="navbar navbar-expand-sm navbar-light py-3">
         <div className="container ">
-          <h1>welcome ...</h1>
-
+          <Link to="/" className="navbar-brand text-dark">
+            <img width="270px" src={showDetails} alt="Show patients" />
+          </Link>
           <button
             className="navbar-toggler ml-auto"
             type="button"
@@ -183,6 +185,7 @@ const ShowPatients = ({ setAuth, history }) => {
         </div>
       </nav>
 
+      <h1 className="mt-5 text-center">Show Patients details</h1>
       <form onSubmit={onSubmitForm} class="was-validated">
         <input
           type="text"

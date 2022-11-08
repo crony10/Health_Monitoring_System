@@ -129,7 +129,6 @@ const Login = ({ setAuth }) => {
       </nav>
       <h1 className="mt-5 text-center">Login</h1>
       <form onSubmit={onSubmitForm} class="was-validated">
-        
         <input
           type="text"
           name="UserName"
@@ -150,12 +149,48 @@ const Login = ({ setAuth }) => {
           required
         />
         <button className="btn btn-success btn-block">Submit</button>
-        {/* <div>
-          <Link to="/signup_login/register/">register</Link>
-        </div>
-        <Link to="/">home page</Link> */}
+        
       </form>
       {/* <button onClick={() => setAuth(true)}>Authenticate</button> */}
+
+      {/* <section>
+        <div className="container py-2">
+          <div className="d-sm-flex justify-content-center">
+            <div
+              style={{
+                background: '#F0EFFF',
+                width:'80%',
+                height:'400px'
+              }}
+            >
+              <h1 className="mt-5 text-center">Login</h1>
+              <form onSubmit={onSubmitForm} class="was-validated">
+                <input
+                  type="text"
+                  name="UserName"
+                  value={UserName}
+                  placeholder="User Name"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                  required
+                />
+                <input
+                  type="text"
+                  name="Password"
+                  value={Password}
+                  placeholder="Password"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                  required
+                />
+                
+                
+                <div ><button className="btn btn-success btn-block">Submit</button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section> */}
     </Fragment>
   );
 };
