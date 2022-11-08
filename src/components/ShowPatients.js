@@ -10,11 +10,16 @@ const ShowPatients = ({ setAuth, history }) => {
   const [avgHr, setAvgHr] = useState(0);
   const [spO, setSpo] = useState(0);
 
+  const [pName, setpName] = useState('');
+  const [url1, setUrl1] = useState('');
+  const [url2, setUrl2] = useState('');
+  const [url3, setUrl3] = useState('');
+
   const [inputs, setInputs] = useState({
-    mono: '',
-    pid: '',
+    ContactNo: '',
+    PatientId: '',
   });
-  const { mono, pid } = inputs;
+  const { ContactNo, PatientId } = inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -23,7 +28,7 @@ const ShowPatients = ({ setAuth, history }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    
+
     // const navigate = useHistory();
 
     // setInputs('');
@@ -32,8 +37,8 @@ const ShowPatients = ({ setAuth, history }) => {
 
     try {
       const body = {
-        mono,
-        pid,
+        ContactNo,
+        PatientId,
       };
 
       const response = await fetch(
@@ -46,7 +51,7 @@ const ShowPatients = ({ setAuth, history }) => {
       );
 
       const parseRes = await response.json();
-      console.log("logging response "+ parseRes.Message);
+      console.log('logging response ' + parseRes);
 
       // if (parseRes.Message === "An error has occurred") {
       //   toast.error('User does not exist!', {
@@ -64,32 +69,61 @@ const ShowPatients = ({ setAuth, history }) => {
       //   // toast.error(parseRes);
       //   history.push('/signup_login/dashboard/ShowPatientDetails/');
       // }
+
+      console.log(parseRes + 'HELLO');
+      // toast.success('Register Successfully', {
+      //   position: toast.POSITION.TOP_CENTER,
+      // });
+      setInputs({ PatientName: '', ContactNo: '', ChannelId: '' });
+      // history.push('/signup_login/dashboard/ShowPatientDetails/');
+
+      setTemp(parseRes.field1);
+      setAvgHr(parseRes.field2);
+      setSpo(parseRes.field3);
+      setpName(parseRes.PatientName);
+
+      setUrl1(parseRes.url1);
+      setUrl2(parseRes.url2);
+      setUrl3(parseRes.url3);
+      
+      patientDetails();
     } catch (err) {
       console.log(err.message);
     }
   };
 
   // Backend call for temperature
-  const temperature = (e) => {
+  const patientDetails = (e) => {
     setInterval(async () => {
       // console.log(temp);
-      // try {
-      //   const response = await fetch(
-      //     'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
-      //     {
-      //       method: 'GET',
-      //       headers: { 'Content-Type': 'application/json' },
-      //     }
-      //   );
-      //   const parseRes = await response.json();
-      //   console.log(parseRes.field1);
-      //   setTemp(parseRes.field1);
-      //   setAvgHr(parseRes.field2);
-      //   setSpo(parseRes.field3);
-      // } catch (err) {
-      //   console.log(err.message);
-      // }
-    }, 1000);
+      try {
+        const body = {
+          ContactNo,
+          PatientId,
+        };
+
+        const response = await fetch(
+          'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          }
+        );
+        const parseRes = await response.json();
+        console.log(parseRes.field1);
+        
+        setTemp(parseRes.field1);
+        setAvgHr(parseRes.field2);
+        setSpo(parseRes.field3);
+
+        setUrl1(parseRes.url1);
+        setUrl2(parseRes.url2);
+        setUrl3(parseRes.url3);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }, 5000);
   };
 
   const removeToken = () => {
@@ -97,9 +131,9 @@ const ShowPatients = ({ setAuth, history }) => {
     window.location.reload(false);
   };
 
-  useEffect(() => {
-    temperature();
-  }, []);
+  // useEffect(() => {
+  //   patientDetails();
+  // }, []);
 
   return (
     <Fragment>
@@ -152,8 +186,8 @@ const ShowPatients = ({ setAuth, history }) => {
       <form onSubmit={onSubmitForm} class="was-validated">
         <input
           type="text"
-          name="mono"
-          value={mono}
+          name="ContactNo"
+          value={ContactNo}
           placeholder="Mobile Number"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
@@ -161,8 +195,8 @@ const ShowPatients = ({ setAuth, history }) => {
 
         <input
           type="text"
-          name="pid"
-          value={pid}
+          name="PatientId"
+          value={PatientId}
           placeholder="Patient ID"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
@@ -173,6 +207,166 @@ const ShowPatients = ({ setAuth, history }) => {
         </div>
         <Link to="/">home page</Link> */}
       </form>
+
+      {/* Patient details */}
+      <div
+        style={{
+          background: '#F9F9FF',
+        }}
+      >
+        <section className="text-dark p-5 p-lg-0 ">
+          <div className="container">
+            <div className="d-sm-flex justify-content-center flex-row">
+              {/* <img style={{
+                              width: '450px',
+                              height: '400px'
+                          }} className="img-fluid" src={dashboard} alt="image" /> */}
+
+              <div className="d-flex flex-column">
+                <h1 class="font">{pName}</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Card
+          className="d-inline-flex col-example shadow-lg p-4 rounded"
+          style={{
+            width: '29rem',
+            margin: '20px',
+            background: '#ffffff',
+          }}
+        >
+          <Card.Body class="cards">
+            <Card.Header style={{ background: '#ffffff' }} className="mb-3 ">
+              <div>
+                {/* <span className="h4">
+                                  <FontAwesomeIcon style={{
+                                      color: '#6c63ff'
+                                  }} icon={faBullseye} /> 
+                              </span> */}
+                <span className=" h4 ">Temperature</span>
+              </div>
+            </Card.Header>
+
+            <Card.Text className="mb-2 ml-3 mt-1">
+              <div>
+                {/* <span className="my-auto h4">
+                                  <FontAwesomeIcon className="" style={{
+                                      color: '#6c63ff'
+                                  }} icon={faGift} />
+                              </span> */}
+
+                <span className="ml-2 h4">{temp}</span>
+              </div>
+            </Card.Text>
+
+            <Card.Text className="mt-5">
+              <div>
+                {/* <span className="my-auto h4">
+                                  <FontAwesomeIcon className="" style={{
+                                      color: '#6c63ff'
+                                  }} icon={faGift} />
+                              </span> */}
+
+                <iframe src={url1} width="105%" height="350" />
+              </div>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+
+        <Card
+          className="d-inline-flex col-example shadow-lg p-4 rounded"
+          style={{
+            width: '29rem',
+            margin: '20px',
+            background: '#ffffff',
+          }}
+        >
+          <Card.Body class="cards">
+            <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+              <div>
+                {/* <span className="h4">
+                                  <FontAwesomeIcon style={{
+                                      color: '#6c63ff'
+                                  }} icon={faBullseye} /> 
+                              </span> */}
+                <span className="ml-2 h4">Average Heart Rate</span>
+              </div>
+            </Card.Header>
+
+            <Card.Text className="mb-2 ml-3 mt-1">
+              <div>
+                {/* <span className="my-auto h4">
+                                  <FontAwesomeIcon className="" style={{
+                                      color: '#6c63ff'
+                                  }} icon={faGift} />
+                              </span> */}
+
+                <span className="ml-2 h4">{avgHr}</span>
+              </div>
+            </Card.Text>
+
+            <Card.Text className="mt-5">
+              <div>
+                {/* <span className="my-auto h4">
+                                  <FontAwesomeIcon className="" style={{
+                                      color: '#6c63ff'
+                                  }} icon={faGift} />
+                              </span> */}
+
+                <iframe src={url2} width="105%" height="350" />
+              </div>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+
+        <Card
+          className="d-inline-flex col-example shadow-lg p-4 rounded"
+          style={{
+            width: '29rem',
+            margin: '20px',
+            background: '#ffffff',
+          }}
+        >
+          <Card.Body class="cards">
+            <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+              <div>
+                {/* <span className="h4">
+                                  <FontAwesomeIcon style={{
+                                      color: '#6c63ff'
+                                  }} icon={faBullseye} /> 
+                              </span> */}
+                <span className="ml-2 h4">Pulse Oxygen</span>
+              </div>
+            </Card.Header>
+
+            <Card.Text className="mb-2 ml-3 mt-1">
+              <div>
+                {/* <span className="my-auto h4">
+                                  <FontAwesomeIcon className="" style={{
+                                      color: '#6c63ff'
+                                  }} icon={faGift} />
+                              </span> */}
+
+                <span className="ml-2 h4">{spO}</span>
+              </div>
+            </Card.Text>
+
+            <Card.Text className="mt-5">
+              <div>
+                {/* <span className="my-auto h4">
+                                  <FontAwesomeIcon className="" style={{
+                                      color: '#6c63ff'
+                                  }} icon={faGift} />
+                              </span> */}
+
+                <iframe src={url3} width="105%" height="350" />
+              </div>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
     </Fragment>
   );
 };

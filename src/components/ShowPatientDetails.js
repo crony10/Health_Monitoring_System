@@ -13,22 +13,22 @@ const ShowPatientDetails = ({ setAuth }) => {
     const temperature = (e) => {
       setInterval(async () => {
         console.log(temp);
-        // try {
-        //   const response = await fetch(
-        //     'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
-        //     {
-        //       method: 'GET',
-        //       headers: { 'Content-Type': 'application/json' },
-        //     }
-        //   );
-        //   const parseRes = await response.json();
-        //   console.log(parseRes.field1);
-        //   setTemp(parseRes.field1);
-        //   setAvgHr(parseRes.field2);
-        //   setSpo(parseRes.field3);
-        // } catch (err) {
-        //   console.log(err.message);
-        // }
+        try {
+          const response = await fetch(
+            'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
+            {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+          const parseRes = await response.json();
+          console.log(parseRes.field1);
+          setTemp(parseRes.field1);
+          setAvgHr(parseRes.field2);
+          setSpo(parseRes.field3);
+        } catch (err) {
+          console.log(err.message);
+        }
       }, 1000);
     };
 
