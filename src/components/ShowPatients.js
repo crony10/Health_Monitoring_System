@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 const ShowPatients = ({ setAuth, history }) => {
-  const [temp, setTemp] = useState(0);
+  const [temp, setTemp] = useState(5);
   const [avgHr, setAvgHr] = useState(0);
   const [spO, setSpo] = useState(0);
 
@@ -85,7 +85,7 @@ const ShowPatients = ({ setAuth, history }) => {
       setUrl1(parseRes.url1);
       setUrl2(parseRes.url2);
       setUrl3(parseRes.url3);
-      
+
       patientDetails();
     } catch (err) {
       console.log(err.message);
@@ -112,7 +112,7 @@ const ShowPatients = ({ setAuth, history }) => {
         );
         const parseRes = await response.json();
         console.log(parseRes.field1);
-        
+
         setTemp(parseRes.field1);
         setAvgHr(parseRes.field2);
         setSpo(parseRes.field3);
@@ -209,164 +209,167 @@ const ShowPatients = ({ setAuth, history }) => {
       </form>
 
       {/* Patient details */}
-      <div
-        style={{
-          background: '#F9F9FF',
-        }}
-      >
-        <section className="text-dark p-5 p-lg-0 ">
-          <div className="container">
-            <div className="d-sm-flex justify-content-center flex-row">
-              {/* <img style={{
-                              width: '450px',
-                              height: '400px'
-                          }} className="img-fluid" src={dashboard} alt="image" /> */}
 
-              <div className="d-flex flex-column">
-                <h1 class="font">{pName}</h1>
+      {pName && (
+        <div
+          style={{
+            background: '#F9F9FF',
+          }}
+        >
+          <section className="text-dark p-5 p-lg-0 ">
+            <div className="container">
+              <div className="d-sm-flex justify-content-center flex-row">
+                {/* <img style={{
+                             width: '450px',
+                             height: '400px'
+                         }} className="img-fluid" src={dashboard} alt="image" /> */}
+
+                <div className="d-flex flex-column">
+                  <h1 class="font">{pName}</h1>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <Card
-          className="d-inline-flex col-example shadow-lg p-4 rounded"
-          style={{
-            width: '29rem',
-            margin: '20px',
-            background: '#ffffff',
-          }}
-        >
-          <Card.Body class="cards">
-            <Card.Header style={{ background: '#ffffff' }} className="mb-3 ">
-              <div>
-                {/* <span className="h4">
-                                  <FontAwesomeIcon style={{
-                                      color: '#6c63ff'
-                                  }} icon={faBullseye} /> 
-                              </span> */}
-                <span className=" h4 ">Temperature</span>
-              </div>
-            </Card.Header>
+          <Card
+            className="d-inline-flex col-example shadow-lg p-4 rounded"
+            style={{
+              width: '29rem',
+              margin: '20px',
+              background: '#ffffff',
+            }}
+          >
+            <Card.Body class="cards">
+              <Card.Header style={{ background: '#ffffff' }} className="mb-3 ">
+                <div>
+                  {/* <span className="h4">
+                                 <FontAwesomeIcon style={{
+                                     color: '#6c63ff'
+                                 }} icon={faBullseye} /> 
+                             </span> */}
+                  <span className=" h4 ">Temperature</span>
+                </div>
+              </Card.Header>
 
-            <Card.Text className="mb-2 ml-3 mt-1">
-              <div>
-                {/* <span className="my-auto h4">
-                                  <FontAwesomeIcon className="" style={{
-                                      color: '#6c63ff'
-                                  }} icon={faGift} />
-                              </span> */}
+              <Card.Text className="mb-2 ml-3 mt-1">
+                <div>
+                  {/* <span className="my-auto h4">
+                                 <FontAwesomeIcon className="" style={{
+                                     color: '#6c63ff'
+                                 }} icon={faGift} />
+                             </span> */}
 
-                <span className="ml-2 h4">{temp}</span>
-              </div>
-            </Card.Text>
+                  <span className="ml-2 h4">{temp}</span>
+                </div>
+              </Card.Text>
 
-            <Card.Text className="mt-5">
-              <div>
-                {/* <span className="my-auto h4">
-                                  <FontAwesomeIcon className="" style={{
-                                      color: '#6c63ff'
-                                  }} icon={faGift} />
-                              </span> */}
+              <Card.Text className="mt-5">
+                <div>
+                  {/* <span className="my-auto h4">
+                                 <FontAwesomeIcon className="" style={{
+                                     color: '#6c63ff'
+                                 }} icon={faGift} />
+                             </span> */}
 
-                <iframe src={url1} width="105%" height="350" />
-              </div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+                  <iframe src={url1} width="105%" height="350" />
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
 
-        <Card
-          className="d-inline-flex col-example shadow-lg p-4 rounded"
-          style={{
-            width: '29rem',
-            margin: '20px',
-            background: '#ffffff',
-          }}
-        >
-          <Card.Body class="cards">
-            <Card.Header style={{ background: '#ffffff' }} className="mb-3">
-              <div>
-                {/* <span className="h4">
-                                  <FontAwesomeIcon style={{
-                                      color: '#6c63ff'
-                                  }} icon={faBullseye} /> 
-                              </span> */}
-                <span className="ml-2 h4">Average Heart Rate</span>
-              </div>
-            </Card.Header>
+          <Card
+            className="d-inline-flex col-example shadow-lg p-4 rounded"
+            style={{
+              width: '29rem',
+              margin: '20px',
+              background: '#ffffff',
+            }}
+          >
+            <Card.Body class="cards">
+              <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+                <div>
+                  {/* <span className="h4">
+                                 <FontAwesomeIcon style={{
+                                     color: '#6c63ff'
+                                 }} icon={faBullseye} /> 
+                             </span> */}
+                  <span className="ml-2 h4">Average Heart Rate</span>
+                </div>
+              </Card.Header>
 
-            <Card.Text className="mb-2 ml-3 mt-1">
-              <div>
-                {/* <span className="my-auto h4">
-                                  <FontAwesomeIcon className="" style={{
-                                      color: '#6c63ff'
-                                  }} icon={faGift} />
-                              </span> */}
+              <Card.Text className="mb-2 ml-3 mt-1">
+                <div>
+                  {/* <span className="my-auto h4">
+                                 <FontAwesomeIcon className="" style={{
+                                     color: '#6c63ff'
+                                 }} icon={faGift} />
+                             </span> */}
 
-                <span className="ml-2 h4">{avgHr}</span>
-              </div>
-            </Card.Text>
+                  <span className="ml-2 h4">{avgHr}</span>
+                </div>
+              </Card.Text>
 
-            <Card.Text className="mt-5">
-              <div>
-                {/* <span className="my-auto h4">
-                                  <FontAwesomeIcon className="" style={{
-                                      color: '#6c63ff'
-                                  }} icon={faGift} />
-                              </span> */}
+              <Card.Text className="mt-5">
+                <div>
+                  {/* <span className="my-auto h4">
+                                 <FontAwesomeIcon className="" style={{
+                                     color: '#6c63ff'
+                                 }} icon={faGift} />
+                             </span> */}
 
-                <iframe src={url2} width="105%" height="350" />
-              </div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+                  <iframe src={url2} width="105%" height="350" />
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
 
-        <Card
-          className="d-inline-flex col-example shadow-lg p-4 rounded"
-          style={{
-            width: '29rem',
-            margin: '20px',
-            background: '#ffffff',
-          }}
-        >
-          <Card.Body class="cards">
-            <Card.Header style={{ background: '#ffffff' }} className="mb-3">
-              <div>
-                {/* <span className="h4">
-                                  <FontAwesomeIcon style={{
-                                      color: '#6c63ff'
-                                  }} icon={faBullseye} /> 
-                              </span> */}
-                <span className="ml-2 h4">Pulse Oxygen</span>
-              </div>
-            </Card.Header>
+          <Card
+            className="d-inline-flex col-example shadow-lg p-4 rounded"
+            style={{
+              width: '29rem',
+              margin: '20px',
+              background: '#ffffff',
+            }}
+          >
+            <Card.Body class="cards">
+              <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+                <div>
+                  {/* <span className="h4">
+                                 <FontAwesomeIcon style={{
+                                     color: '#6c63ff'
+                                 }} icon={faBullseye} /> 
+                             </span> */}
+                  <span className="ml-2 h4">Pulse Oxygen</span>
+                </div>
+              </Card.Header>
 
-            <Card.Text className="mb-2 ml-3 mt-1">
-              <div>
-                {/* <span className="my-auto h4">
-                                  <FontAwesomeIcon className="" style={{
-                                      color: '#6c63ff'
-                                  }} icon={faGift} />
-                              </span> */}
+              <Card.Text className="mb-2 ml-3 mt-1">
+                <div>
+                  {/* <span className="my-auto h4">
+                                 <FontAwesomeIcon className="" style={{
+                                     color: '#6c63ff'
+                                 }} icon={faGift} />
+                             </span> */}
 
-                <span className="ml-2 h4">{spO}</span>
-              </div>
-            </Card.Text>
+                  <span className="ml-2 h4">{spO}</span>
+                </div>
+              </Card.Text>
 
-            <Card.Text className="mt-5">
-              <div>
-                {/* <span className="my-auto h4">
-                                  <FontAwesomeIcon className="" style={{
-                                      color: '#6c63ff'
-                                  }} icon={faGift} />
-                              </span> */}
+              <Card.Text className="mt-5">
+                <div>
+                  {/* <span className="my-auto h4">
+                                 <FontAwesomeIcon className="" style={{
+                                     color: '#6c63ff'
+                                 }} icon={faGift} />
+                             </span> */}
 
-                <iframe src={url3} width="105%" height="350" />
-              </div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
+                  <iframe src={url3} width="105%" height="350" />
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      )}
     </Fragment>
   );
 };
