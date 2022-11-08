@@ -22,6 +22,7 @@ import Register from './components/Register';
 import Temp from './components/temp';
 import AddPatients from './components/AddPatients';
 import ShowPatients from './components/ShowPatients';
+import ShowPatientDetails from './components/ShowPatientDetails';
 // toast.configure();
 
 function App() {
@@ -121,10 +122,22 @@ function App() {
             />
             <Route
               exact
-              path="/signup_login/dashboard/ShowPatients"
+              path="/signup_login/dashboard/ShowPatients/"
               render={(props) =>
                 isAuthenticated ? (
                   <ShowPatients {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/signup_login/login" />
+                )
+              }
+            />
+
+            <Route
+              exact
+              path="/signup_login/dashboard/ShowPatientDetails/"
+              render={(props) =>
+                isAuthenticated ? (
+                  <ShowPatientDetails {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/signup_login/login" />
                 )

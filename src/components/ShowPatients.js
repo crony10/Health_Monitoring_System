@@ -3,11 +3,76 @@ import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
+import {useNavigate} from "react-router-dom"
 
 const ShowPatients = ({ setAuth }) => {
   const [temp, setTemp] = useState(0);
   const [avgHr, setAvgHr] = useState(0);
   const [spO, setSpo] = useState(0);
+
+  const [inputs, setInputs] = useState({
+    mono: '',
+    pid: '',
+  });
+  const { mono, pid } = inputs;
+
+
+  const onChange = (e) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+    // console.log(e);
+  };
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+
+    const navigate = useNavigate(); 
+    navigate("/signup_login/dashboard/ShowPatientDetails/");
+
+
+    // setInputs('');
+    
+    // Backend call by clicking submit button
+    
+    // try {
+    //   // const body = {
+    //   //   mono,
+    //   //   pid
+    //   // };
+      
+    //   // const response = await fetch(
+    //   //   'https://hmsapis1.azurewebsites.net/api/WebAppApis/LatestMeasuredData',
+    //   //   {
+    //   //     method: 'POST',
+    //   //     headers: { 'Content-Type': 'application/json' },
+    //   //     body: JSON.stringify(body),
+    //   //   }
+    //   //   );
+        
+    //   //   const parseRes = await response.json();
+    //   //   console.log(parseRes);
+
+    //   //   if (parseRes === 'failed') {
+          
+
+    //   //     // toast.error('User does not exist!', {
+    //   //     //   position: toast.POSITION.TOP_CENTER,
+    //   //     // });
+      
+    //   //   } else {
+    //   //     console.log(parseRes + 'HELLO');
+    //   //     toast.success('Register Successfully', {
+    //   //       position: toast.POSITION.TOP_CENTER,
+    //   //     });
+    //   //     // e.target.reset();
+    //   //     setInputs({ PatientName: '', ContactNo: '' ,ChannelId:''});
+    //   //     // localStorage.setItem('token', JSON.stringify('this is token'));
+    //   //     // window.location.reload(false);
+    //   //   // toast.error(parseRes);
+    //   // }
+    // } catch (err) {
+    //   console.log(err.message);
+    // }
+  };
 
   // Backend call for temperature
   const temperature = (e) => {
@@ -36,10 +101,6 @@ const ShowPatients = ({ setAuth }) => {
     localStorage.removeItem('token');
     window.location.reload(false);
   };
-
-  useEffect(() => {
-    temperature();
-  }, []);
 
   useEffect(() => {
     temperature();
@@ -93,183 +154,30 @@ const ShowPatients = ({ setAuth }) => {
         </div>
       </nav>
 
-      {/* Patient details */}
-      <div
-        style={{
-          background: '#F9F9FF',
-        }}
-      >
-        <section className="text-dark p-5 p-lg-0 ">
-          <div className="container">
-            <div className="d-sm-flex justify-content-center flex-row">
-              {/* <img style={{
-                                width: '450px',
-                                height: '400px'
-                            }} className="img-fluid" src={dashboard} alt="image" /> */}
+      <form onSubmit={onSubmitForm} class="was-validated">
+        <input
+          type="text"
+          name="mono"
+          value={mono}
+          placeholder="Mobile Number"
+          onChange={(e) => onChange(e)}
+          className="form-control my-3"
+        />
 
-              <div className="d-flex flex-column">
-                <h1 class="font">Patient Name, Age ...</h1>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <Card
-          className="d-inline-flex col-example shadow-lg p-4 rounded"
-          style={{
-            width: '29rem',
-            margin: '20px',
-            background: '#ffffff',
-          }}
-        >
-          <Card.Body class="cards">
-            <Card.Header style={{ background: '#ffffff' }} className="mb-3 ">
-              <div>
-                {/* <span className="h4">
-                                    <FontAwesomeIcon style={{
-                                        color: '#6c63ff'
-                                    }} icon={faBullseye} /> 
-                                </span> */}
-                <span className=" h4 ">Temperature</span>
-              </div>
-            </Card.Header>
-
-            <Card.Text className="mb-2 ml-3 mt-1">
-              <div>
-                {/* <span className="my-auto h4">
-                                    <FontAwesomeIcon className="" style={{
-                                        color: '#6c63ff'
-                                    }} icon={faGift} />
-                                </span> */}
-
-                <span className="ml-2 h4">{temp}</span>
-              </div>
-            </Card.Text>
-
-            <Card.Text className="mt-5">
-              <div>
-                {/* <span className="my-auto h4">
-                                    <FontAwesomeIcon className="" style={{
-                                        color: '#6c63ff'
-                                    }} icon={faGift} />
-                                </span> */}
-
-                <iframe
-                  src={
-                    'https://thingspeak.com/channels/1855560/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line'
-                  }
-                  width="105%"
-                  height="350"
-                />
-              </div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-
-        <Card
-          className="d-inline-flex col-example shadow-lg p-4 rounded"
-          style={{
-            width: '29rem',
-            margin: '20px',
-            background: '#ffffff',
-          }}
-        >
-          <Card.Body class="cards">
-            <Card.Header style={{ background: '#ffffff' }} className="mb-3">
-              <div>
-                {/* <span className="h4">
-                                    <FontAwesomeIcon style={{
-                                        color: '#6c63ff'
-                                    }} icon={faBullseye} /> 
-                                </span> */}
-                <span className="ml-2 h4">Average Heart Rate</span>
-              </div>
-            </Card.Header>
-
-            <Card.Text className="mb-2 ml-3 mt-1">
-              <div>
-                {/* <span className="my-auto h4">
-                                    <FontAwesomeIcon className="" style={{
-                                        color: '#6c63ff'
-                                    }} icon={faGift} />
-                                </span> */}
-
-                <span className="ml-2 h4">{avgHr}</span>
-              </div>
-            </Card.Text>
-
-            <Card.Text className="mt-5">
-              <div>
-                {/* <span className="my-auto h4">
-                                    <FontAwesomeIcon className="" style={{
-                                        color: '#6c63ff'
-                                    }} icon={faGift} />
-                                </span> */}
-
-                <iframe
-                  src={
-                    'https://thingspeak.com/channels/1855560/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line'
-                  }
-                  width="105%"
-                  height="350"
-                />
-              </div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-
-        <Card
-          className="d-inline-flex col-example shadow-lg p-4 rounded"
-          style={{
-            width: '29rem',
-            margin: '20px',
-            background: '#ffffff',
-          }}
-        >
-          <Card.Body class="cards">
-            <Card.Header style={{ background: '#ffffff' }} className="mb-3">
-              <div>
-                {/* <span className="h4">
-                                    <FontAwesomeIcon style={{
-                                        color: '#6c63ff'
-                                    }} icon={faBullseye} /> 
-                                </span> */}
-                <span className="ml-2 h4">Pulse Oxygen</span>
-              </div>
-            </Card.Header>
-
-            <Card.Text className="mb-2 ml-3 mt-1">
-              <div>
-                {/* <span className="my-auto h4">
-                                    <FontAwesomeIcon className="" style={{
-                                        color: '#6c63ff'
-                                    }} icon={faGift} />
-                                </span> */}
-
-                <span className="ml-2 h4">{spO}</span>
-              </div>
-            </Card.Text>
-
-            <Card.Text className="mt-5">
-              <div>
-                {/* <span className="my-auto h4">
-                                    <FontAwesomeIcon className="" style={{
-                                        color: '#6c63ff'
-                                    }} icon={faGift} />
-                                </span> */}
-
-                <iframe
-                  src={
-                    'https://thingspeak.com/channels/1855560/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line'
-                  }
-                  width="105%"
-                  height="350"
-                />
-              </div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
+        <input
+          type="text"
+          name="pid"
+          value={pid}
+          placeholder="Patient ID"
+          onChange={(e) => onChange(e)}
+          className="form-control my-3"
+        />
+        <button className="btn btn-success btn-block">Submit</button>
+        {/* <div>
+          <Link to="/signup_login/register/">register</Link>
+        </div>
+        <Link to="/">home page</Link> */}
+      </form>
     </Fragment>
   );
 };

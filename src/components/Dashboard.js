@@ -32,7 +32,7 @@ const Dashboard = ({ props }) => {
         }}
       >
         Add Patients
-      </Link>
+      </Link> 
 
       <Link
         to="/signup_login/dashboard/ShowPatients"
@@ -41,7 +41,7 @@ const Dashboard = ({ props }) => {
           background: '#35CBBD',
         }}
       >
-        Show Patient Details
+        Show Patients
       </Link>
 
       

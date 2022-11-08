@@ -23,35 +23,38 @@ const AddPatients = ({ setAuth }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-
+    // setInputs('');
+    
     // Backend call by clicking submit button
-
+    
     try {
       const body = {
         PatientName,
         ContactNo,
         ChannelId,
       };
-
+      
       const response = await fetch(
-        'https://hmsapis1.azurewebsites.net/api/WebAppApis/UserRegistration',
+        'https://hmsapis1.azurewebsites.net/api/PatientApis/PatientRegistration',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
         }
-      );
-
-      const parseRes = await response.json();
-      if (parseRes === 'Sucess') {
-        console.log(parseRes + 'HELLO');
-        toast.success('Register Successfully', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        localStorage.setItem('token', JSON.stringify('this is token'));
-        window.location.reload(false);
-      } else {
-        toast.error('User already exist!', {
+        );
+        
+        const parseRes = await response.json();
+        if (parseRes === 'Sucess') {
+          console.log(parseRes + 'HELLO');
+          toast.success('Register Successfully', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          // e.target.reset();
+          setInputs({ PatientName: '', ContactNo: '' ,ChannelId:''});
+          // localStorage.setItem('token', JSON.stringify('this is token'));
+          // window.location.reload(false);
+        } else {
+          toast.error('User already exist!', {
           position: toast.POSITION.TOP_CENTER,
         });
         // toast.error(parseRes);
