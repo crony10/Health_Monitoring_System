@@ -129,36 +129,39 @@ const ShowPatients = ({ setAuth, history }) => {
         let temp = parseRes.field1;
         console.log(typeof temp);
         if (parseInt(temp) >= 80) {
-        
-          document.getElementById("temperature").style.background = "red";
-          toast.warning('Temperature is above the specified threshold!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
-
-        }else{
-          document.getElementById("temperature").style.background = "white";
+          document.getElementById('temperature').style.background = 'red';
+          toast.warning(
+            `Temperature of ${parseRes.PatientName} is above the specified threshold!`,
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
+        } else {
+          document.getElementById('temperature').style.background = 'white';
         }
 
-        if (parseInt(parseRes.field2) < 50 || parseInt(parseRes.field2) >120) {
-        
-          document.getElementById("avgHr").style.background = "red";
-          toast.warning('Heart Rate is above the specified threshold!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
-
-        }else{
-          document.getElementById("avgHr").style.background = "white";
+        if (parseInt(parseRes.field2) < 50 || parseInt(parseRes.field2) > 120) {
+          document.getElementById('avgHr').style.background = 'red';
+          toast.warning(
+            `Heart Rate of ${parseRes.PatientName} is above the specified threshold!`,
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
+        } else {
+          document.getElementById('avgHr').style.background = 'white';
         }
 
         if (parseInt(parseRes.field3) < 100) {
-        
-          document.getElementById("spo2").style.background = "red";
-          toast.warning('SpO2 is above the specified threshold!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
-
-        }else{
-          document.getElementById("spo2").style.background = "white";
+          document.getElementById('spo2').style.background = 'red';
+          toast.warning(
+            `SpO2 of ${parseRes.PatientName} is  above the specified threshold!`,
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
+        } else {
+          document.getElementById('spo2').style.background = 'white';
         }
       } catch (err) {
         console.log(err.message);
@@ -170,7 +173,6 @@ const ShowPatients = ({ setAuth, history }) => {
     localStorage.removeItem('token');
     window.location.reload(false);
   };
-
 
   return (
     <Fragment>
@@ -250,11 +252,7 @@ const ShowPatients = ({ setAuth, history }) => {
       {/* Patient details */}
 
       {pName && (
-        <div
-          style={{
-            background: '#F9F9FF',
-          }}
-        >
+        <div>
           <section className="text-dark p-5 p-lg-0 ">
             <div className="container">
               <div className="d-sm-flex justify-content-center flex-row">
@@ -270,27 +268,27 @@ const ShowPatients = ({ setAuth, history }) => {
             </div>
           </section>
 
-          <div className="d-lg-flex justify-content-center">
+          <div
+            className="d-lg-flex justify-content-center"
+            style={{
+              background: '#dff6f4',
+            }}
+          >
             <Card
-            id="temperature"
+              id="temperature"
               className="d-inline-flex col-example shadow-lg p-4 rounded"
               style={{
                 width: '29rem',
                 margin: '20px',
-                background: '#ffffff',
+                background: '#bfede9',
               }}
             >
               <Card.Body class="cards">
                 <Card.Header
-                  style={{ background: '#ffffff' }}
+                  style={{ background: '#dff6f4' }}
                   className="mb-3 "
                 >
                   <div>
-                    {/* <span className="h4">
-                                 <FontAwesomeIcon style={{
-                                     color: '#6c63ff'
-                                 }} icon={faBullseye} /> 
-                             </span> */}
                     <span className=" h4 ">Temperature</span>
                   </div>
                 </Card.Header>
@@ -322,16 +320,16 @@ const ShowPatients = ({ setAuth, history }) => {
             </Card>
 
             <Card
-            id="avgHr"
+              id="avgHr"
               className="d-inline-flex col-example shadow-lg p-4 rounded"
               style={{
                 width: '29rem',
                 margin: '20px',
-                background: '#ffffff',
+                background: '#bfede9',
               }}
             >
               <Card.Body class="cards">
-                <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+                <Card.Header style={{ background: '#dff6f4' }} className="mb-3">
                   <div>
                     {/* <span className="h4">
                                  <FontAwesomeIcon style={{
@@ -369,16 +367,16 @@ const ShowPatients = ({ setAuth, history }) => {
             </Card>
 
             <Card
-            id="spo2"
+              id="spo2"
               className="d-inline-flex col-example shadow-lg p-4 rounded"
               style={{
                 width: '29rem',
                 margin: '20px',
-                background: '#ffffff',
+                background: '#bfede9',
               }}
             >
               <Card.Body class="cards">
-                <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+                <Card.Header style={{ background: '#dff6f4' }} className="mb-3">
                   <div>
                     {/* <span className="h4">
                                  <FontAwesomeIcon style={{
