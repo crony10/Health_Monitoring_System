@@ -145,6 +145,7 @@ const Register = ({ setAuth }) => {
           placeholder="Hospital Contact Number"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
+          maxLength="10"
         />
         <input
           type="text"

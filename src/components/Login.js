@@ -140,7 +140,7 @@ const Login = ({ setAuth }) => {
         />
 
         <input
-          type="text"
+          type="password"
           name="Password"
           value={Password}
           placeholder="Password"
