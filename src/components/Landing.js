@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
-import landing from '../assets/landing.svg'
+import landing from '../assets/landing.svg';
 
 const Landing = () => {
   return (
@@ -68,18 +68,38 @@ const Landing = () => {
                 </h1>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="container">
-              <div className="d-sm-flex justify-content-left flex-row">
-                <img
-                  style={{
-                    width: '600px',
-                    height: '500px',
-                  }}
-                  className="img-fluid pt-5"
-                  src={landing}
-                  alt="image"
-                />
+        <section className="text-dark p-5 p-lg-0 ">
+          <div className="container">
+            <div className="d-sm-flex justify-content-center flex-row">
+              <img
+                style={{
+                  width: '600px',
+                  height: '500px',
+                }}
+                className="img-fluid pt-5"
+                src={landing}
+                alt="image"
+              />
+
+              <div className="d-flex justify-content-center flex-column p-5 m-5">
+                {/* <h1 class="font">Welcome</h1>
+
+              <div className="mt-5">
+                <h2 className="mb-4">Get started by adding a habit</h2>
+              </div> */}
+
+                <div className="m-3 pt-5">
+                  <h1>
+                  <span style={{ color: '#35CBBD' }}>
+                    Hassel free
+                  </span>{' '} portal for all your patient's  <span style={{ color: '#35CBBD' }}>
+                    medical records
+                  </span>{' '}
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
