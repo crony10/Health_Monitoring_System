@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import showDetails from '../assets/showDetails.svg'
+import showDetails from '../assets/showDetails.svg';
 
 const ShowPatients = ({ setAuth, history }) => {
   const [temp, setTemp] = useState(5);
@@ -234,143 +234,148 @@ const ShowPatients = ({ setAuth, history }) => {
             </div>
           </section>
 
-          <Card
-            className="d-inline-flex col-example shadow-lg p-4 rounded"
-            style={{
-              width: '29rem',
-              margin: '20px',
-              background: '#ffffff',
-            }}
-          >
-            <Card.Body class="cards">
-              <Card.Header style={{ background: '#ffffff' }} className="mb-3 ">
-                <div>
-                  {/* <span className="h4">
+          <div className="d-lg-flex justify-content-center">
+            <Card
+              className="d-inline-flex col-example shadow-lg p-4 rounded"
+              style={{
+                width: '29rem',
+                margin: '20px',
+                background: '#ffffff',
+              }}
+            >
+              <Card.Body class="cards">
+                <Card.Header
+                  style={{ background: '#ffffff' }}
+                  className="mb-3 "
+                >
+                  <div>
+                    {/* <span className="h4">
                                  <FontAwesomeIcon style={{
                                      color: '#6c63ff'
                                  }} icon={faBullseye} /> 
                              </span> */}
-                  <span className=" h4 ">Temperature</span>
-                </div>
-              </Card.Header>
+                    <span className=" h4 ">Temperature</span>
+                  </div>
+                </Card.Header>
 
-              <Card.Text className="mb-2 ml-3 mt-1">
-                <div>
-                  {/* <span className="my-auto h4">
+                <Card.Text className="mb-2 ml-3 mt-1">
+                  <div>
+                    {/* <span className="my-auto h4">
                                  <FontAwesomeIcon className="" style={{
                                      color: '#6c63ff'
                                  }} icon={faGift} />
                              </span> */}
 
-                  <span className="ml-2 h4">{temp}</span>
-                </div>
-              </Card.Text>
+                    <span className="ml-2 h4">{temp}</span>
+                  </div>
+                </Card.Text>
 
-              <Card.Text className="mt-5">
-                <div>
-                  {/* <span className="my-auto h4">
+                <Card.Text className="mt-5">
+                  <div>
+                    {/* <span className="my-auto h4">
                                  <FontAwesomeIcon className="" style={{
                                      color: '#6c63ff'
                                  }} icon={faGift} />
                              </span> */}
 
-                  <iframe src={url1} width="105%" height="350" />
-                </div>
-              </Card.Text>
-            </Card.Body>
-          </Card>
+                    <iframe src={url1} width="105%" height="350" />
+                  </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
 
-          <Card
-            className="d-inline-flex col-example shadow-lg p-4 rounded"
-            style={{
-              width: '29rem',
-              margin: '20px',
-              background: '#ffffff',
-            }}
-          >
-            <Card.Body class="cards">
-              <Card.Header style={{ background: '#ffffff' }} className="mb-3">
-                <div>
-                  {/* <span className="h4">
+            <Card
+              className="d-inline-flex col-example shadow-lg p-4 rounded"
+              style={{
+                width: '29rem',
+                margin: '20px',
+                background: '#ffffff',
+              }}
+            >
+              <Card.Body class="cards">
+                <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+                  <div>
+                    {/* <span className="h4">
                                  <FontAwesomeIcon style={{
                                      color: '#6c63ff'
                                  }} icon={faBullseye} /> 
                              </span> */}
-                  <span className="ml-2 h4">Average Heart Rate</span>
-                </div>
-              </Card.Header>
+                    <span className="ml-2 h4">Average Heart Rate</span>
+                  </div>
+                </Card.Header>
 
-              <Card.Text className="mb-2 ml-3 mt-1">
-                <div>
-                  {/* <span className="my-auto h4">
+                <Card.Text className="mb-2 ml-3 mt-1">
+                  <div>
+                    {/* <span className="my-auto h4">
                                  <FontAwesomeIcon className="" style={{
                                      color: '#6c63ff'
                                  }} icon={faGift} />
                              </span> */}
 
-                  <span className="ml-2 h4">{avgHr}</span>
-                </div>
-              </Card.Text>
+                    <span className="ml-2 h4">{avgHr}</span>
+                  </div>
+                </Card.Text>
 
-              <Card.Text className="mt-5">
-                <div>
-                  {/* <span className="my-auto h4">
+                <Card.Text className="mt-5">
+                  <div>
+                    {/* <span className="my-auto h4">
                                  <FontAwesomeIcon className="" style={{
                                      color: '#6c63ff'
                                  }} icon={faGift} />
                              </span> */}
 
-                  <iframe src={url2} width="105%" height="350" />
-                </div>
-              </Card.Text>
-            </Card.Body>
-          </Card>
+                    <iframe src={url2} width="105%" height="350" />
+                  </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
 
-          <Card
-            className="d-inline-flex col-example shadow-lg p-4 rounded"
-            style={{
-              width: '29rem',
-              margin: '20px',
-              background: '#ffffff',
-            }}
-          >
-            <Card.Body class="cards">
-              <Card.Header style={{ background: '#ffffff' }} className="mb-3">
-                <div>
-                  {/* <span className="h4">
+            <Card
+              className="d-inline-flex col-example shadow-lg p-4 rounded"
+              style={{
+                width: '29rem',
+                margin: '20px',
+                background: '#ffffff',
+              }}
+            >
+              <Card.Body class="cards">
+                <Card.Header style={{ background: '#ffffff' }} className="mb-3">
+                  <div>
+                    {/* <span className="h4">
                                  <FontAwesomeIcon style={{
                                      color: '#6c63ff'
                                  }} icon={faBullseye} /> 
                              </span> */}
-                  <span className="ml-2 h4">Pulse Oxygen</span>
-                </div>
-              </Card.Header>
+                    <span className="ml-2 h4">Pulse Oxygen</span>
+                  </div>
+                </Card.Header>
 
-              <Card.Text className="mb-2 ml-3 mt-1">
-                <div>
-                  {/* <span className="my-auto h4">
+                <Card.Text className="mb-2 ml-3 mt-1">
+                  <div>
+                    {/* <span className="my-auto h4">
                                  <FontAwesomeIcon className="" style={{
                                      color: '#6c63ff'
                                  }} icon={faGift} />
                              </span> */}
 
-                  <span className="ml-2 h4">{spO}</span>
-                </div>
-              </Card.Text>
+                    <span className="ml-2 h4">{spO}</span>
+                  </div>
+                </Card.Text>
 
-              <Card.Text className="mt-5">
-                <div>
-                  {/* <span className="my-auto h4">
+                <Card.Text className="mt-5">
+                  <div>
+                    {/* <span className="my-auto h4">
                                  <FontAwesomeIcon className="" style={{
                                      color: '#6c63ff'
                                  }} icon={faGift} />
                              </span> */}
 
-                  <iframe src={url3} width="105%" height="350" />
-                </div>
-              </Card.Text>
-            </Card.Body>
-          </Card>
+                    <iframe src={url3} width="105%" height="350" />
+                  </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
         </div>
       )}
     </Fragment>
