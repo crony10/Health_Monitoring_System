@@ -72,9 +72,12 @@ const ShowPatients = ({ setAuth, history }) => {
       // }
 
       console.log(parseRes + 'HELLO');
-      // toast.success('Register Successfully', {
-      //   position: toast.POSITION.TOP_CENTER,
-      // });
+      if (parseRes.Message === 'Failed') {
+        toast.error('User does not exist!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+
       setInputs({ PatientName: '', ContactNo: '', ChannelId: '' });
       // history.push('/signup_login/dashboard/ShowPatientDetails/');
 
@@ -121,10 +124,46 @@ const ShowPatients = ({ setAuth, history }) => {
         setUrl1(parseRes.url1);
         setUrl2(parseRes.url2);
         setUrl3(parseRes.url3);
+
+        // console.log("reached before temp high");
+        let temp = parseRes.field1;
+        console.log(typeof temp);
+        if (parseInt(temp) >= 80) {
+        
+          document.getElementById("temperature").style.background = "red";
+          toast.warning('Temperature is above the specified threshold!', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+
+        }else{
+          document.getElementById("temperature").style.background = "white";
+        }
+
+        if (parseInt(parseRes.field2) < 50 || parseInt(parseRes.field2) >120) {
+        
+          document.getElementById("avgHr").style.background = "red";
+          toast.warning('Heart Rate is above the specified threshold!', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+
+        }else{
+          document.getElementById("avgHr").style.background = "white";
+        }
+
+        if (parseInt(parseRes.field3) < 100) {
+        
+          document.getElementById("spo2").style.background = "red";
+          toast.warning('SpO2 is above the specified threshold!', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+
+        }else{
+          document.getElementById("spo2").style.background = "white";
+        }
       } catch (err) {
         console.log(err.message);
       }
-    }, 5000);
+    }, 17000);
   };
 
   const removeToken = () => {
@@ -132,9 +171,6 @@ const ShowPatients = ({ setAuth, history }) => {
     window.location.reload(false);
   };
 
-  // useEffect(() => {
-  //   patientDetails();
-  // }, []);
 
   return (
     <Fragment>
@@ -236,6 +272,7 @@ const ShowPatients = ({ setAuth, history }) => {
 
           <div className="d-lg-flex justify-content-center">
             <Card
+            id="temperature"
               className="d-inline-flex col-example shadow-lg p-4 rounded"
               style={{
                 width: '29rem',
@@ -285,6 +322,7 @@ const ShowPatients = ({ setAuth, history }) => {
             </Card>
 
             <Card
+            id="avgHr"
               className="d-inline-flex col-example shadow-lg p-4 rounded"
               style={{
                 width: '29rem',
@@ -331,6 +369,7 @@ const ShowPatients = ({ setAuth, history }) => {
             </Card>
 
             <Card
+            id="spo2"
               className="d-inline-flex col-example shadow-lg p-4 rounded"
               style={{
                 width: '29rem',

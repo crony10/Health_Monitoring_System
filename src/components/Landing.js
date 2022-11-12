@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
+import landing from '../assets/landing.svg'
 
 const Landing = () => {
   return (
@@ -55,7 +56,7 @@ const Landing = () => {
         </nav>
 
         {/* Hero section */}
-        <section className=" text-light p-5 p-lg-0 text-center text-sm-start">
+        <section>
           <div className="container">
             <div className="d-sm-flex align-items-center justify-content-between">
               <div>
@@ -65,6 +66,20 @@ const Landing = () => {
                     Health monitoring system
                   </span>{' '}
                 </h1>
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="d-sm-flex justify-content-left flex-row">
+                <img
+                  style={{
+                    width: '600px',
+                    height: '500px',
+                  }}
+                  className="img-fluid pt-5"
+                  src={landing}
+                  alt="image"
+                />
               </div>
             </div>
           </div>

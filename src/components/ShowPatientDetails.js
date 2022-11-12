@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
+import { type } from '@testing-library/user-event/dist/type';
 
 const ShowPatientDetails = ({ setAuth }) => {
   const [temp, setTemp] = useState(0);
@@ -26,6 +27,9 @@ const ShowPatientDetails = ({ setAuth }) => {
           setTemp(parseRes.field1);
           setAvgHr(parseRes.field2);
           setSpo(parseRes.field3);
+
+
+         
         } catch (err) {
           console.log(err.message);
         }

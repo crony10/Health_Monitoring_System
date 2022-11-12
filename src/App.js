@@ -48,13 +48,13 @@ function App() {
 
   return (
     <Fragment>
-      {/* <div
+      <div
         style={{
           background: '#dff6f4',
         }}
-      > */}
+      >
         <Router>
-          <>
+        
             <Switch>
               <Route
                 exact
@@ -146,10 +146,10 @@ function App() {
                 }
               />
             </Switch>
-          </>
+          
         </Router>
         <ToastContainer />
-      {/* </div> */}
+      </div>
     </Fragment>
   );
 }
