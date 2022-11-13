@@ -121,7 +121,7 @@ const AddPatients = ({ setAuth }) => {
       </nav>
 
       {/* Form  */}
-      <h1 className="mt-5 text-center">Add Patients</h1>
+      {/* <h1 className="mt-5 text-center">Add Patients</h1>
       <form onSubmit={onSubmitForm}>
         <input
           type="text"
@@ -149,7 +149,62 @@ const AddPatients = ({ setAuth }) => {
         />
 
         <button className="btn btn-success btn-block">Submit</button>
-      </form>
+      </form> */}
+      <section>
+        <div className="container py-2">
+          <div className="d-sm-flex justify-content-center">
+            <div
+              style={{
+                background: '#bfede9',
+                width: '100%',
+              }}
+            >
+              <h1 className="mt-5 text-center">Add Patient</h1>
+              <form onSubmit={onSubmitForm} className="m-5 was-validated">
+                <input
+                  type="text"
+                  name="PatientName"
+                  value={PatientName}
+                  placeholder="Patient Name"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <input
+                  type="text"
+                  name="ContactNo"
+                  value={ContactNo}
+                  placeholder="Contact Number"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <input
+                  type="text"
+                  name="ChannelId"
+                  value={ChannelId}
+                  placeholder="Channel Id"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <div
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  <button
+                    style={{
+                      background: '#35CBBD',
+                      width: '30%',
+                    }}
+                    className="btn btn-block rounded-pill text-light"
+                  >
+                    Add Patient
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </Fragment>
   );
 };

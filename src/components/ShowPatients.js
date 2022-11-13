@@ -27,7 +27,6 @@ const ShowPatients = ({ setAuth, history }) => {
     // console.log(e);
   };
 
-
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -224,8 +223,8 @@ const ShowPatients = ({ setAuth, history }) => {
         </div>
       </nav>
 
-      <h1 className="mt-5 text-center">Show Patients details</h1>
-      <form onSubmit={onSubmitForm} class="was-validated">
+      {/* <h1 className="mt-5 text-center">Show Patients details</h1> */}
+      {/* <form onSubmit={onSubmitForm} class="was-validated">
         <input
           type="text"
           name="ContactNo"
@@ -244,14 +243,58 @@ const ShowPatients = ({ setAuth, history }) => {
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
-        {/* <div>
-          <Link to="/signup_login/register/">register</Link>
+      </form> */}
+
+      <section>
+        <div className="container py-2">
+          <div className="d-sm-flex justify-content-center">
+            <div
+              style={{
+                background: '#bfede9',
+                width: '100%',
+              }}
+            >
+              <h1 className="mt-5 text-center">Show Patients</h1>
+              <form onSubmit={onSubmitForm} className="m-5 was-validated">
+                <input
+                  type="text"
+                  name="ContactNo"
+                  value={ContactNo}
+                  placeholder="Mobile Number"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+
+                <input
+                  type="text"
+                  name="PatientId"
+                  value={PatientId}
+                  placeholder="Patient ID"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <div
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  <button
+                    style={{
+                      background: '#35CBBD',
+                      width: '30%',
+                    }}
+                    className="btn btn-block rounded-pill text-light"
+                  >
+                    Show Patient
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <Link to="/">home page</Link> */}
-      </form>
+      </section>
 
       {/* Patient details */}
-
       {pName && (
         <div>
           <section className="text-dark p-5 p-lg-0 ">
@@ -314,7 +357,7 @@ const ShowPatients = ({ setAuth, history }) => {
                                  }} icon={faGift} />
                              </span> */}
 
-                    <iframe src={url1} width="105%" height="350" />
+                    <iframe src={url1} width="100%" height="350" />
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -361,7 +404,7 @@ const ShowPatients = ({ setAuth, history }) => {
                                  }} icon={faGift} />
                              </span> */}
 
-                    <iframe src={url2} width="105%" height="350" />
+                    <iframe src={url2} width="100%" height="350" />
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -408,7 +451,7 @@ const ShowPatients = ({ setAuth, history }) => {
                                  }} icon={faGift} />
                              </span> */}
 
-                    <iframe src={url3} width="105%" height="350" />
+                    <iframe src={url3} width="100%" height="350" />
                   </div>
                 </Card.Text>
               </Card.Body>
