@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import building2 from '../assets/building2.svg';
-
+import { toast } from 'react-toastify';
 const Dashboard = ({ props }) => {
   // const [HospitalName, setHospitalName] = useState({
   //   HospitalName: props
@@ -15,6 +15,75 @@ const Dashboard = ({ props }) => {
     localStorage.removeItem('token');
     window.location.reload(false);
   };
+
+  function alarmAlert() {
+    setInterval(async () => {
+      try {
+        const response = await fetch(
+          'https://hmsapis1.azurewebsites.net/api/WebAppApis/AlertForWeb',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+        const parseRes = await response.json();
+
+        // if (parseRes === 'Fine') {
+        //   // toast('Will close after 15s', { autoClose: 60000 });
+
+        //   // let a = 'apple';
+        //   let pName = parseRes.PatientName;
+        //   let pNum = parseRes.ContactNo;
+        //   let pId = parsRes.PatientId;
+        //   // let pName = "patient1";
+        //   // let pNum = "1234565678";
+        //   // let pId = "1";
+        //   toast.error(
+        //     <div>
+        //       <b>{pName}</b> is having an emergency!
+        //       <br /> Contact Number: {pNum}
+        //       <br /> Patient Id: {pId}
+        //     </div>,
+        //     {
+        //       position: toast.POSITION.TOP_CENTER,
+        //       autoClose: 60000
+        //     }
+        //   );
+        // }
+
+        if (parseRes !== 'Fine') {
+          // toast('Will close after 15s', { autoClose: 60000 });
+
+          // toast('Will close after 15s', { autoClose: 60000 });
+
+          // let a = 'apple';
+          let pName = parseRes.PatientName;
+          let pNum = parseRes.ContactNo;
+          let pId = parseRes.PatientId;
+          // let pName = "patient1";
+          // let pNum = "1234565678";
+          // let pId = "1";
+          toast.error(
+            <div>
+              <b>{pName}</b> is having an emergency!
+              <br /> Contact Number: <b>{pNum}</b>
+              <br /> Patient Id: <b>{pId}</b>
+            </div>,
+            {
+              position: toast.POSITION.TOP_RIGHT,
+              autoClose: 60000,
+            }
+          );
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    }, 60000);
+  }
+
+  useEffect(() => {
+    alarmAlert();
+  }, []);
 
   return (
     <>

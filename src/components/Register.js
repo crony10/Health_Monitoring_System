@@ -98,7 +98,6 @@ const Register = ({ setAuth }) => {
                   Home page
                 </Link> */}
 
-
                 <Link
                   to="/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
@@ -115,7 +114,7 @@ const Register = ({ setAuth }) => {
                 </Link> */}
 
                 <Link
-                   to="/signup_login/login/"
+                  to="/signup_login/login/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',
@@ -128,8 +127,8 @@ const Register = ({ setAuth }) => {
           </div>
         </div>
       </nav>
-      <h1 className="mt-5 text-center">Register</h1>
-      <form onSubmit={onSubmitForm}>
+      {/* <h1 className="mt-5 text-center">Register</h1> */}
+      {/* <form onSubmit={onSubmitForm}>
         <input
           type="text"
           name="HospitalName"
@@ -174,9 +173,82 @@ const Register = ({ setAuth }) => {
           className="form-control my-3"
         />
         <button className="btn btn-success btn-block">Submit</button>
-        
-      </form>
+      </form> */}
 
+      <section>
+        <div className="container py-2">
+          <div className="d-sm-flex justify-content-center">
+            <div
+              style={{
+                background: '#bfede9',
+                width: '100%',
+              }}
+            >
+              <h1 className="mt-5 text-center">Register</h1>
+              <form onSubmit={onSubmitForm} className="m-5">
+                <input
+                  type="text"
+                  name="HospitalName"
+                  value={HospitalName}
+                  placeholder="Hospital Name"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <input
+                  type="text"
+                  name="HospitalContactNo"
+                  value={HospitalContactNo}
+                  placeholder="Hospital Contact Number"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                  maxLength="10"
+                />
+                <input
+                  type="text"
+                  name="HospitalEmailId"
+                  value={HospitalEmailId}
+                  placeholder="Hospital Email"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+
+                <input
+                  type="text"
+                  name="UserName"
+                  value={UserName}
+                  placeholder="User Name"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+
+                <input
+                  type="text"
+                  name="Password"
+                  value={Password}
+                  placeholder="Password"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <div
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  <button
+                    style={{
+                      background: '#35CBBD',
+                      width: '30%',
+                    }}
+                    className="btn btn-block rounded-pill text-light"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </Fragment>
   );
 };

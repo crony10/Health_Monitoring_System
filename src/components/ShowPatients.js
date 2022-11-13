@@ -27,6 +27,7 @@ const ShowPatients = ({ setAuth, history }) => {
     // console.log(e);
   };
 
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
 

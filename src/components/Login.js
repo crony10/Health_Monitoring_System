@@ -127,8 +127,8 @@ const Login = ({ setAuth }) => {
           </div>
         </div>
       </nav>
-      <h1 className="mt-5 text-center">Login</h1>
-      <form onSubmit={onSubmitForm} class="was-validated">
+      {/* <h1 className="mt-5 text-center">Login</h1> */}
+      {/* <form onSubmit={onSubmitForm} class="was-validated">
         <input
           type="text"
           name="UserName"
@@ -149,22 +149,20 @@ const Login = ({ setAuth }) => {
           required
         />
         <button className="btn btn-success btn-block">Submit</button>
-        
-      </form>
+      </form> */}
       {/* <button onClick={() => setAuth(true)}>Authenticate</button> */}
 
-      {/* <section>
+      <section>
         <div className="container py-2">
           <div className="d-sm-flex justify-content-center">
             <div
               style={{
-                background: '#F0EFFF',
-                width:'80%',
-                height:'400px'
+                background: '#bfede9',
+                width: '100%',
               }}
             >
               <h1 className="mt-5 text-center">Login</h1>
-              <form onSubmit={onSubmitForm} class="was-validated">
+              <form onSubmit={onSubmitForm} className="m-5 was-validated">
                 <input
                   type="text"
                   name="UserName"
@@ -174,8 +172,9 @@ const Login = ({ setAuth }) => {
                   className="form-control my-3"
                   required
                 />
+
                 <input
-                  type="text"
+                  type="password"
                   name="Password"
                   value={Password}
                   placeholder="Password"
@@ -183,14 +182,26 @@ const Login = ({ setAuth }) => {
                   className="form-control my-3"
                   required
                 />
-                
-                
-                <div ><button className="btn btn-success btn-block">Submit</button></div>
+                <div
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  <button
+                    style={{
+                      background: '#35CBBD',
+                      width: '30%',
+                    }}
+                    className="btn btn-block rounded-pill text-light"
+                  >
+                    Login
+                  </button>
+                </div>
               </form>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </Fragment>
   );
 };
