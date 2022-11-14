@@ -34,7 +34,7 @@ const Dashboard = ({ props }) => {
         //   // let a = 'apple';
         //   let pName = parseRes.PatientName;
         //   let pNum = parseRes.ContactNo;
-        //   let pId = parsRes.PatientId;
+        //   let pId = parseRes.PatientId;
         //   // let pName = "patient1";
         //   // let pNum = "1234565678";
         //   // let pId = "1";
@@ -47,6 +47,7 @@ const Dashboard = ({ props }) => {
         //     {
         //       position: toast.POSITION.TOP_CENTER,
         //       autoClose: 60000
+              
         //     }
         //   );
         // }
@@ -71,7 +72,7 @@ const Dashboard = ({ props }) => {
             </div>,
             {
               position: toast.POSITION.TOP_RIGHT,
-              autoClose: 60000,
+              autoClose: 60000
             }
           );
         }

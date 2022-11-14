@@ -106,7 +106,7 @@ const AddPatients = ({ setAuth }) => {
               <li className="nav-item">
                 <button
                   style={{
-                    background: '#35CBBD',
+                    background: '#fe0101',
                   }}
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   onClick={() => removeToken()}

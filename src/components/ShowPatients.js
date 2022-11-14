@@ -126,9 +126,11 @@ const ShowPatients = ({ setAuth, history }) => {
         setUrl3(parseRes.url3);
 
         // console.log("reached before temp high");
+
+        // temp
         let temp = parseRes.field1;
         console.log(typeof temp);
-        if (parseInt(temp) >= 80) {
+        if (parseInt(temp) <= 94 || parseInt(temp)>=99) {
           document.getElementById('temperature').style.background = 'red';
           toast.warning(
             `Temperature of ${parseRes.PatientName} is above the specified threshold!`,
@@ -140,7 +142,8 @@ const ShowPatients = ({ setAuth, history }) => {
           document.getElementById('temperature').style.background = 'white';
         }
 
-        if (parseInt(parseRes.field2) < 50 || parseInt(parseRes.field2) > 120) {
+        // heart rate
+        if (parseInt(parseRes.field2) < 55 || parseInt(parseRes.field2) > 120) {
           document.getElementById('avgHr').style.background = 'red';
           toast.warning(
             `Heart Rate of ${parseRes.PatientName} is above the specified threshold!`,
@@ -152,7 +155,9 @@ const ShowPatients = ({ setAuth, history }) => {
           document.getElementById('avgHr').style.background = 'white';
         }
 
-        if (parseInt(parseRes.field3) < 100) {
+        
+        // spo2
+        if (parseInt(parseRes.field3) < 95) {
           document.getElementById('spo2').style.background = 'red';
           toast.warning(
             `SpO2 of ${parseRes.PatientName} is  above the specified threshold!`,
@@ -209,7 +214,7 @@ const ShowPatients = ({ setAuth, history }) => {
               <li className="nav-item">
                 <button
                   style={{
-                    background: '#35CBBD',
+                    background: '#fe0101',
                   }}
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   onClick={() => removeToken()}
