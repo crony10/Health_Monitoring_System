@@ -72,14 +72,14 @@ const Dashboard = ({ props }) => {
             </div>,
             {
               position: toast.POSITION.TOP_RIGHT,
-              autoClose: 60000
+              autoClose: 30000
             }
           );
         }
       } catch (err) {
         console.log(err.message);
       }
-    }, 60000);
+    }, 1000);
   }
 
   useEffect(() => {
