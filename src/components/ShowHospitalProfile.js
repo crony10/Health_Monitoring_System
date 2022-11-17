@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../assets/logo.jpg';
@@ -21,10 +22,11 @@ const ShowHospitalProfile = ({ setAuth }) => {
     Password,
   } = inputs;
 
-  const onChange = (e) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-    // console.log(e);
-  };
+  // const onChange = (parseRes) => {
+  //   // setInputs({ ...inputs, [e.target.name]: e.target.value });
+
+  //   // console.log(e);
+  // };
 
   const setRegisterAuth = (auth) => {
     console.log(auth);
@@ -32,9 +34,10 @@ const ShowHospitalProfile = ({ setAuth }) => {
   };
 
   const onProfileLoad = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    // Backend call by clicking submit button
+    const UserName = JSON.parse(localStorage.getItem('userId'));
+    console.log(UserName);
 
     try {
       const body = {
@@ -46,7 +49,7 @@ const ShowHospitalProfile = ({ setAuth }) => {
       };
 
       const response = await fetch(
-        'https://hmsapis1.azurewebsites.net/api/WebAppApis/UserRegistration',
+        'https://hmsapis1.azurewebsites.net/api/WebAppApis/UserProfile',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -55,23 +58,22 @@ const ShowHospitalProfile = ({ setAuth }) => {
       );
 
       const parseRes = await response.json();
-      if (parseRes === 'Sucess') {
-        console.log(parseRes + 'HELLO');
-        toast.success('Register Successfully', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        localStorage.setItem('token', JSON.stringify('this is token'));
-        window.location.reload(false);
-      } else {
-        toast.error('User already exist!', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        // toast.error(parseRes);
-      }
+
+      console.log(parseRes);
+      setInputs({
+        HospitalName: parseRes.HospitalName,
+        HospitalContactNo: parseRes.HospitalContactNo,
+        HospitalEmailId: parseRes.HospitalEmailId,
+        UserName: parseRes.UserName,
+      });
     } catch (err) {
       console.log(err.message);
     }
   };
+
+  useEffect(() => {
+    onProfileLoad();
+  }, []);
 
   return (
     <Fragment>
@@ -184,57 +186,28 @@ const ShowHospitalProfile = ({ setAuth }) => {
                 width: '60%',
               }}
             >
-              <h1 className="mt-5 text-center">Hospital Profile</h1>
-              <form className="m-5">
-                <h2 className="form-control my-3">Hospital Name: </h2>
-                <h2 className="form-control my-3">Hospital Contact Number: </h2>
-                <h2 className="form-control my-3">Hospital Email: </h2>
-                <h2 className="form-control my-3">User Name: </h2>
-                {/* <input
-                  type="text"
-                  name="HospitalName"
-                  value={HospitalName}
-                  placeholder="Hospital Name"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                />
-                <input
-                  type="text"
-                  name="HospitalContactNo"
-                  value={HospitalContactNo}
-                  placeholder="Hospital Contact Number"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                  maxLength="10"
-                />
-                <input
-                  type="text"
-                  name="HospitalEmailId"
-                  value={HospitalEmailId}
-                  placeholder="Hospital Email"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                />
+              <h1 className="mt-5 text-center" style={{ color: '#259388' }}>
+                Hospital Profile
+              </h1>
 
-                <input
-                  type="text"
-                  name="UserName"
-                  value={UserName}
-                  placeholder="User Name"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                />
+              <h3 className="m-5 ">
+                Hospital Name:
+                <span style={{ color: '#259388' }}> {inputs.HospitalName}</span>
+              </h3>
+              <h3 className="m-5 ">
+              Hospital Contact Number:
+                <span style={{ color: '#259388' }}> {inputs.HospitalContactNo}</span>
+              </h3>
+              <h3 className="m-5 ">
+              Hospital Email: 
+                <span style={{ color: '#259388' }}>  {inputs.HospitalEmailId}</span>
+              </h3>
+              <h3 className="m-5 ">
+              User Name:
+                <span style={{ color: '#259388' }}> {inputs.UserName}</span>
+              </h3>
 
-                <input
-                  type="text"
-                  name="Password"
-                  value={Password}
-                  placeholder="Password"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                /> */}
-                
-              </form>
+              
             </div>
           </div>
         </div>
