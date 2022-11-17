@@ -7,10 +7,18 @@ const AddPatients = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     PatientName: '',
     ContactNo: '',
-    ChannelId: '',
+    PatientAge: '',
+    PatientAddress: '',
+    ChannelId: ''
   });
 
-  const { PatientName, ContactNo, ChannelId } = inputs;
+  const {
+    PatientName,
+    ContactNo,
+    ChannelId,
+    PatientAge,
+    PatientAddress
+  } = inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -23,6 +31,10 @@ const AddPatients = ({ setAuth }) => {
   // };
 
   const onSubmitForm = async (e) => {
+    // Fetching the userId
+    const UserName = JSON.parse(localStorage.getItem('userId'));
+    console.log(UserName);
+    
     e.preventDefault();
     // setInputs('');
 
@@ -33,6 +45,9 @@ const AddPatients = ({ setAuth }) => {
         PatientName,
         ContactNo,
         ChannelId,
+        PatientAge,
+        PatientAddress,
+        UserName
       };
 
       const response = await fetch(
@@ -51,7 +66,7 @@ const AddPatients = ({ setAuth }) => {
           position: toast.POSITION.TOP_CENTER,
         });
         // e.target.reset();
-        setInputs({ PatientName: '', ContactNo: '', ChannelId: '' });
+        setInputs({ PatientName: '', ContactNo: '', ChannelId: '', PatientAge:'', PatientAddress:''});
         // localStorage.setItem('token', JSON.stringify('this is token'));
         // window.location.reload(false);
       } else {
@@ -156,7 +171,7 @@ const AddPatients = ({ setAuth }) => {
             <div
               style={{
                 background: '#bfede9',
-                width: '100%',
+                width: '60%',
               }}
             >
               <h1 className="mt-5 text-center">Add Patient</h1>
@@ -173,7 +188,24 @@ const AddPatients = ({ setAuth }) => {
                   type="text"
                   name="ContactNo"
                   value={ContactNo}
-                  placeholder="Contact Number"
+                  placeholder="Patient's Contact Number"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                
+                <input
+                  type="text"
+                  name="PatientAge"
+                  value={PatientAge}
+                  placeholder="Patient's Age"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                <input
+                  type="text"
+                  name="PatientAddress"
+                  value={PatientAddress}
+                  placeholder="Patient's Address"
                   onChange={(e) => onChange(e)}
                   className="form-control my-3"
                 />

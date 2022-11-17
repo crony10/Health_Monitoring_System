@@ -108,7 +108,7 @@ const ShowPatientDetails = ({ setAuth }) => {
                           }} className="img-fluid" src={dashboard} alt="image" /> */}
 
               <div className="d-flex flex-column">
-                <h1 class="font">Patient Name, Age ...</h1>
+                <h1 className="font">Patient Name, Age ...</h1>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@ const ShowPatientDetails = ({ setAuth }) => {
             background: '#ffffff',
           }}
         >
-          <Card.Body class="cards">
+          <Card.Body className="cards">
             <Card.Header style={{ background: '#ffffff' }} className="mb-3 ">
               <div>
                 {/* <span className="h4">
@@ -174,7 +174,7 @@ const ShowPatientDetails = ({ setAuth }) => {
             background: '#ffffff',
           }}
         >
-          <Card.Body class="cards">
+          <Card.Body className="cards">
             <Card.Header style={{ background: '#ffffff' }} className="mb-3">
               <div>
                 {/* <span className="h4">
@@ -226,7 +226,7 @@ const ShowPatientDetails = ({ setAuth }) => {
             background: '#ffffff',
           }}
         >
-          <Card.Body class="cards">
+          <Card.Body className="cards">
             <Card.Header style={{ background: '#ffffff' }} className="mb-3">
               <div>
                 {/* <span className="h4">

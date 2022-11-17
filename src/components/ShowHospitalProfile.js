@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import logo from '../assets/logo.jpg';
 import Dashboard from './Dashboard';
 
-const Register = ({ setAuth }) => {
+const ShowHospitalProfile = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     HospitalName: '',
     HospitalContactNo: '',
@@ -31,7 +31,7 @@ const Register = ({ setAuth }) => {
     setAuth(auth);
   };
 
-  const onSubmitForm = async (e) => {
+  const onProfileLoad = async (e) => {
     e.preventDefault();
 
     // Backend call by clicking submit button
@@ -184,9 +184,13 @@ const Register = ({ setAuth }) => {
                 width: '60%',
               }}
             >
-              <h1 className="mt-5 text-center">Register</h1>
-              <form onSubmit={onSubmitForm} className="m-5">
-                <input
+              <h1 className="mt-5 text-center">Hospital Profile</h1>
+              <form className="m-5">
+                <h2 className="form-control my-3">Hospital Name: </h2>
+                <h2 className="form-control my-3">Hospital Contact Number: </h2>
+                <h2 className="form-control my-3">Hospital Email: </h2>
+                <h2 className="form-control my-3">User Name: </h2>
+                {/* <input
                   type="text"
                   name="HospitalName"
                   value={HospitalName}
@@ -228,22 +232,8 @@ const Register = ({ setAuth }) => {
                   placeholder="Password"
                   onChange={(e) => onChange(e)}
                   className="form-control my-3"
-                />
-                <div
-                  style={{
-                    textAlign: 'center',
-                  }}
-                >
-                  <button
-                    style={{
-                      background: '#35CBBD',
-                      width: '30%',
-                    }}
-                    className="btn btn-block rounded-pill text-light"
-                  >
-                    Register
-                  </button>
-                </div>
+                /> */}
+                
               </form>
             </div>
           </div>
@@ -253,4 +243,4 @@ const Register = ({ setAuth }) => {
   );
 };
 
-export default Register;
+export default ShowHospitalProfile;

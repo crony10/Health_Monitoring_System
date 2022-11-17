@@ -60,7 +60,7 @@ const Landing = () => {
           <div className="container">
             <div className="d-sm-flex align-items-center justify-content-between">
               <div>
-                <h1 class="font" style={{ color: '#000000' }}>
+                <h1 className="font" style={{ color: '#000000' }}>
                   Welcome to{' '}
                   <span style={{ color: '#35CBBD' }}>
                     Health monitoring system

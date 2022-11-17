@@ -130,7 +130,7 @@ const ShowPatients = ({ setAuth, history }) => {
         // temp
         let temp = parseRes.field1;
         console.log(typeof temp);
-        if (parseInt(temp) <= 94 || parseInt(temp)>=99) {
+        if (parseInt(temp) <= 94 || parseInt(temp) >= 99) {
           document.getElementById('temperature').style.background = 'red';
           toast.warning(
             `Temperature of ${parseRes.PatientName} is above the specified threshold!`,
@@ -139,7 +139,7 @@ const ShowPatients = ({ setAuth, history }) => {
             }
           );
         } else {
-          document.getElementById('temperature').style.background = 'white';
+          document.getElementById('temperature').style.background = '#bfede9';
         }
 
         // heart rate
@@ -152,10 +152,9 @@ const ShowPatients = ({ setAuth, history }) => {
             }
           );
         } else {
-          document.getElementById('avgHr').style.background = 'white';
+          document.getElementById('avgHr').style.background = '#bfede9';
         }
 
-        
         // spo2
         if (parseInt(parseRes.field3) < 95) {
           document.getElementById('spo2').style.background = 'red';
@@ -166,7 +165,7 @@ const ShowPatients = ({ setAuth, history }) => {
             }
           );
         } else {
-          document.getElementById('spo2').style.background = 'white';
+          document.getElementById('spo2').style.background = '#bfede9';
         }
       } catch (err) {
         console.log(err.message);
@@ -228,35 +227,13 @@ const ShowPatients = ({ setAuth, history }) => {
         </div>
       </nav>
 
-      {/* <h1 className="mt-5 text-center">Show Patients details</h1> */}
-      {/* <form onSubmit={onSubmitForm} class="was-validated">
-        <input
-          type="text"
-          name="ContactNo"
-          value={ContactNo}
-          placeholder="Mobile Number"
-          onChange={(e) => onChange(e)}
-          className="form-control my-3"
-        />
-
-        <input
-          type="text"
-          name="PatientId"
-          value={PatientId}
-          placeholder="Patient ID"
-          onChange={(e) => onChange(e)}
-          className="form-control my-3"
-        />
-        <button className="btn btn-success btn-block">Submit</button>
-      </form> */}
-
       <section>
         <div className="container py-2">
           <div className="d-sm-flex justify-content-center">
             <div
               style={{
                 background: '#bfede9',
-                width: '100%',
+                width: '60%',
               }}
             >
               <h1 className="mt-5 text-center">Show Patients</h1>
@@ -292,6 +269,45 @@ const ShowPatients = ({ setAuth, history }) => {
                   >
                     Show Patient
                   </button>
+                  {/* <link
+                    style={{
+                      background: '#35CBBD',
+                      width: '30%',
+                    }}
+                  >
+                    Generate Report
+                  </link> */}
+
+                  {/* <Link
+                    to="/signup_login/dashboard/AddPatients"
+                    className="btn btn-block rounded-pill text-light"
+                    style={{
+                      background: '#35CBBD',
+                      width: '30%',
+                    }}
+                  >
+                    Genrate Report
+                  </Link> */}
+
+                  <h3 className="mt-5 text-center">OR</h3>
+                  <h1 className="mt-5 text-center">Generate Patient Report</h1>
+
+                  <input
+                  type="text"
+                  name="dateFrom"
+
+                  placeholder="From"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
+                  <input
+                  type="text"
+                  name="dateFrom"
+
+                  placeholder="To"
+                  onChange={(e) => onChange(e)}
+                  className="form-control my-3"
+                />
                 </div>
               </form>
             </div>
@@ -311,7 +327,7 @@ const ShowPatients = ({ setAuth, history }) => {
                          }} className="img-fluid" src={dashboard} alt="image" /> */}
 
                 <div className="d-flex flex-column">
-                  <h1 class="font">{pName}</h1>
+                  <h1 className="font">{pName}</h1>
                 </div>
               </div>
             </div>
@@ -332,7 +348,7 @@ const ShowPatients = ({ setAuth, history }) => {
                 background: '#bfede9',
               }}
             >
-              <Card.Body class="cards">
+              <Card.Body className="cards">
                 <Card.Header
                   style={{ background: '#dff6f4' }}
                   className="mb-3 "
@@ -377,7 +393,7 @@ const ShowPatients = ({ setAuth, history }) => {
                 background: '#bfede9',
               }}
             >
-              <Card.Body class="cards">
+              <Card.Body className="cards">
                 <Card.Header style={{ background: '#dff6f4' }} className="mb-3">
                   <div>
                     {/* <span className="h4">
@@ -424,7 +440,7 @@ const ShowPatients = ({ setAuth, history }) => {
                 background: '#bfede9',
               }}
             >
-              <Card.Body class="cards">
+              <Card.Body className="cards">
                 <Card.Header style={{ background: '#dff6f4' }} className="mb-3">
                   <div>
                     {/* <span className="h4">

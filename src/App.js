@@ -23,27 +23,41 @@ import Temp from './components/temp';
 import AddPatients from './components/AddPatients';
 import ShowPatients from './components/ShowPatients';
 import ShowPatientDetails from './components/ShowPatientDetails';
+import ShowHospitalProfile from './components/ShowHospitalProfile';
 // toast.configure();
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState('');
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
+  // const onUserIdChange = (string) => {
+  //   setUserId(string);
+  // };
+
   const isVerify = () => {
     const items = JSON.parse(localStorage.getItem('token'));
-
+    // const incomingUserId = JSON.parse(localStorage.getItem('userId'));
+    // const userId2 = JSON.parse(localStorage.getItem('userId'));
+    // setUserId(JSON.parse(localStorage.getItem('userId')));
+    // console.log(userId2);
     if (items) {
       setAuth(true);
     } else {
       setAuth(false);
     }
+
+    // if(userId==''){
+    //   onUserIdChange(incomingUserId);
+    // }
   };
 
   useEffect(() => {
     isVerify();
+
   }, []);
 
   return (
@@ -74,7 +88,7 @@ function App() {
                   !isAuthenticated ? (
                     <Temp {...props} />
                   ) : (
-                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                    <Redirect to="/signup_login/dashboard" setAuth={setAuth}  />
                   )
                 }
               />
@@ -83,7 +97,7 @@ function App() {
                 path="/signup_login/login/"
                 render={(props) =>
                   !isAuthenticated ? (
-                    <Login {...props} setAuth={setAuth} />
+                    <Login {...props} setAuth={setAuth} userId={userId} />
                   ) : (
                     <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
                   )
@@ -106,6 +120,17 @@ function App() {
                 render={(props) =>
                   isAuthenticated ? (
                     <Dashboard {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/login" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/dashboard/ShowHospitalProfile"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <ShowHospitalProfile {...props} setAuth={setAuth} />
                   ) : (
                     <Redirect to="/signup_login/login" />
                   )

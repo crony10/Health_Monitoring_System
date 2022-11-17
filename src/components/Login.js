@@ -15,10 +15,9 @@ const Login = ({ setAuth }) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
     // console.log(e);
   };
-  // const setLoginAuth = (auth)=>{
-  //   console.log(auth);
-  //   setAuth.setAuth(auth);
-  // }
+
+
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -55,6 +54,8 @@ const Login = ({ setAuth }) => {
         });
 
         localStorage.setItem('token', JSON.stringify('this is token'));
+        localStorage.setItem('userId', JSON.stringify(body.UserName));
+
         window.location.reload(false);
       } else {
         // setLoginAuth(false);
@@ -158,7 +159,7 @@ const Login = ({ setAuth }) => {
             <div
               style={{
                 background: '#bfede9',
-                width: '100%',
+                width: '60%',
               }}
             >
               <h1 className="mt-5 text-center">Login</h1>

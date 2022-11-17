@@ -18,7 +18,11 @@ const Dashboard = ({ props }) => {
 
   function alarmAlert() {
     setInterval(async () => {
+      // Fetching the userId
+      // const incomingUserId = JSON.parse(localStorage.getItem('userId'));
+      // console.log(incomingUserId);
       try {
+        // console.log(userId);
         const response = await fetch(
           'https://hmsapis1.azurewebsites.net/api/WebAppApis/AlertForWeb',
           {
@@ -28,6 +32,7 @@ const Dashboard = ({ props }) => {
         );
         const parseRes = await response.json();
 
+        // this is the code written only for testing
         // if (parseRes === 'Fine') {
         //   // toast('Will close after 15s', { autoClose: 60000 });
 
@@ -47,7 +52,7 @@ const Dashboard = ({ props }) => {
         //     {
         //       position: toast.POSITION.TOP_CENTER,
         //       autoClose: 60000
-              
+
         //     }
         //   );
         // }
@@ -72,7 +77,7 @@ const Dashboard = ({ props }) => {
             </div>,
             {
               position: toast.POSITION.TOP_RIGHT,
-              autoClose: 30000
+              autoClose: 30000,
             }
           );
         }
@@ -98,7 +103,7 @@ const Dashboard = ({ props }) => {
                          }} className="img-fluid" src={dashboard} alt="image" /> */}
 
               <div className="d-flex flex-column mt-5">
-                <h1 class="font">DashBoard</h1>
+                <h1 className="font">DashBoard</h1>
               </div>
             </div>
           </div>
@@ -126,16 +131,15 @@ const Dashboard = ({ props }) => {
 
                   <div className="m-3 pt-5">
                     <Link
-                      to="/signup_login/dashboard/AddPatients"
+                      to="/signup_login/dashboard/ShowHospitalProfile"
                       className="btn text-light btn-lg text-sm-start rounded-pill"
                       style={{
                         background: '#35CBBD',
                       }}
                     >
-                      Add Patients
+                      Show Hospital Profile
                     </Link>
                   </div>
-
                   <div className="m-3">
                     <Link
                       to="/signup_login/dashboard/ShowPatients"
@@ -145,6 +149,18 @@ const Dashboard = ({ props }) => {
                       }}
                     >
                       Show Patients
+                    </Link>
+                  </div>
+
+                  <div className="m-3">
+                    <Link
+                      to="/signup_login/dashboard/AddPatients"
+                      className="btn text-light btn-lg text-sm-start rounded-pill"
+                      style={{
+                        background: '#35CBBD',
+                      }}
+                    >
+                      Add Patients
                     </Link>
                   </div>
 
