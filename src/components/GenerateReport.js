@@ -201,7 +201,7 @@ const GenerateReport = ({ setAuth, history }) => {
   const renderDates = () => {
     return parseRes.map(function (element, index) {
       return (
-        <tr>
+        <tr key={element.created}>
           <td>{element.created_at}</td>
           <td>{element.field1}</td>
           <td>{element.field2}</td>

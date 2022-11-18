@@ -269,45 +269,6 @@ const ShowPatients = ({ setAuth, history }) => {
                   >
                     Show Patient
                   </button>
-                  {/* <link
-                    style={{
-                      background: '#35CBBD',
-                      width: '30%',
-                    }}
-                  >
-                    Generate Report
-                  </link> */}
-
-                  {/* <Link
-                    to="/signup_login/dashboard/AddPatients"
-                    className="btn btn-block rounded-pill text-light"
-                    style={{
-                      background: '#35CBBD',
-                      width: '30%',
-                    }}
-                  >
-                    Genrate Report
-                  </Link> */}
-
-                  <h3 className="mt-5 text-center">OR</h3>
-                  <h1 className="mt-5 text-center">Generate Patient Report</h1>
-
-                  <input
-                  type="text"
-                  name="dateFrom"
-
-                  placeholder="From"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                />
-                  <input
-                  type="text"
-                  name="dateFrom"
-
-                  placeholder="To"
-                  onChange={(e) => onChange(e)}
-                  className="form-control my-3"
-                />
                 </div>
               </form>
             </div>
