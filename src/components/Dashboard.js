@@ -151,6 +151,17 @@ const Dashboard = ({ props }) => {
                       Show Patients
                     </Link>
                   </div>
+                  <div className="m-3">
+                    <Link
+                      to="/signup_login/dashboard/GenerateReport"
+                      className="btn text-light btn-lg text-sm-start rounded-pill"
+                      style={{
+                        background: '#35CBBD',
+                      }}
+                    >
+                      Generate Patient Report
+                    </Link>
+                  </div>
 
                   <div className="m-3">
                     <Link

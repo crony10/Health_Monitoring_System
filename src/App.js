@@ -24,6 +24,7 @@ import AddPatients from './components/AddPatients';
 import ShowPatients from './components/ShowPatients';
 import ShowPatientDetails from './components/ShowPatientDetails';
 import ShowHospitalProfile from './components/ShowHospitalProfile';
+import GenerateReport from './components/GenerateReport';
 // toast.configure();
 
 function App() {
@@ -142,6 +143,17 @@ function App() {
                 render={(props) =>
                   isAuthenticated ? (
                     <AddPatients {...props} setAuth={setAuth} />
+                  ) : (
+                    <Redirect to="/signup_login/login" />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup_login/dashboard/GenerateReport"
+                render={(props) =>
+                  isAuthenticated ? (
+                    <GenerateReport {...props} setAuth={setAuth} />
                   ) : (
                     <Redirect to="/signup_login/login" />
                   )
