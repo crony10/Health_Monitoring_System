@@ -130,7 +130,7 @@ const ShowPatients = ({ setAuth, history }) => {
         // temp
         let temp = parseRes.field1;
         console.log(typeof temp);
-        if (parseInt(temp) <= 94 || parseInt(temp) >= 99) {
+        if ((parseInt(temp) <= 94 && parseInt(temp) >= 92) || (parseInt(temp) <= 102 && parseInt(temp) >= 99)) {
           document.getElementById('temperature').style.background = 'red';
           toast.warning(
             `Temperature of ${parseRes.PatientName} is above the specified threshold!`,
@@ -143,7 +143,7 @@ const ShowPatients = ({ setAuth, history }) => {
         }
 
         // heart rate
-        if (parseInt(parseRes.field2) < 55 || parseInt(parseRes.field2) > 120) {
+        if ((parseInt(parseRes.field2) < 55 && parseInt(parseRes.field2) > 45) || (parseInt(parseRes.field2) < 120 && parseInt(parseRes.field2) > 115)) {
           document.getElementById('avgHr').style.background = 'red';
           toast.warning(
             `Heart Rate of ${parseRes.PatientName} is above the specified threshold!`,
@@ -156,7 +156,7 @@ const ShowPatients = ({ setAuth, history }) => {
         }
 
         // spo2
-        if (parseInt(parseRes.field3) < 95) {
+        if (parseInt(parseRes.field3) < 95 && parseInt(parseRes.field3) > 93) {
           document.getElementById('spo2').style.background = 'red';
           toast.warning(
             `SpO2 of ${parseRes.PatientName} is  above the specified threshold!`,

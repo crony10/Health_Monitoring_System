@@ -201,7 +201,7 @@ const GenerateReport = ({ setAuth, history }) => {
   const renderDates = () => {
     return parseRes.map(function (element, index) {
       return (
-        <tr key={element.created}>
+        <tr>
           <td>{element.created_at}</td>
           <td>{element.field1}</td>
           <td>{element.field2}</td>
@@ -395,18 +395,6 @@ const GenerateReport = ({ setAuth, history }) => {
         </div>
       </section>
 
-      {/* ul li approach */}
-      {/* {flag && (
-        <ul>
-          <li>date</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          {parseRes.map(function (element, index) {
-            return element.created_at;
-          })}
-        </ul>
-      )} */}
     </Fragment>
   );
 };
