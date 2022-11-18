@@ -197,7 +197,7 @@ const GenerateReport = ({ setAuth, history }) => {
   //         )
   //     })
   //   };
-
+// temp commit
   const renderDates = () => {
     return parseRes.map(function (element, index) {
       return (
