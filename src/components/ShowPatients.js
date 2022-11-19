@@ -127,6 +127,7 @@ const ShowPatients = ({ setAuth, history }) => {
 
         // console.log("reached before temp high");
 
+        // temp commit
         // temp
         let temp = parseRes.field1;
         console.log(typeof temp);
@@ -446,4 +447,3 @@ const ShowPatients = ({ setAuth, history }) => {
 };
 
 export default withRouter(ShowPatients);
-// temp commit2
