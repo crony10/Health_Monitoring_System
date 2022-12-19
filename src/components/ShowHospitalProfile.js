@@ -28,6 +28,11 @@ const ShowHospitalProfile = ({ setAuth }) => {
   //   // console.log(e);
   // };
 
+  const removeToken = () => {
+    localStorage.removeItem('token');
+    window.location.reload(false);
+  };
+
   const setRegisterAuth = (auth) => {
     console.log(auth);
     setAuth(auth);
@@ -107,7 +112,7 @@ const ShowHospitalProfile = ({ setAuth }) => {
                     background: '#35CBBD',
                   }}
                 >
-                  Home page
+                  Dashboard
                 </Link>
               </li>
               <li className="nav-item">
@@ -115,15 +120,15 @@ const ShowHospitalProfile = ({ setAuth }) => {
                   Login
                 </Link> */}
 
-                <Link
-                  to="/signup_login/login/"
-                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                <button
                   style={{
-                    background: '#35CBBD',
+                    background: '#fe0101',
                   }}
+                  className="btn text-light btn-lg text-sm-start rounded-pill"
+                  onClick={() => removeToken()}
                 >
-                  Login
-                </Link>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
@@ -195,19 +200,23 @@ const ShowHospitalProfile = ({ setAuth }) => {
                 <span style={{ color: '#259388' }}> {inputs.HospitalName}</span>
               </h3>
               <h3 className="m-5 ">
-              Hospital Contact Number:
-                <span style={{ color: '#259388' }}> {inputs.HospitalContactNo}</span>
+                Hospital Contact Number:
+                <span style={{ color: '#259388' }}>
+                  {' '}
+                  {inputs.HospitalContactNo}
+                </span>
               </h3>
               <h3 className="m-5 ">
-              Hospital Email: 
-                <span style={{ color: '#259388' }}>  {inputs.HospitalEmailId}</span>
+                Hospital Email:
+                <span style={{ color: '#259388' }}>
+                  {' '}
+                  {inputs.HospitalEmailId}
+                </span>
               </h3>
               <h3 className="m-5 ">
-              User Name:
+                User Name:
                 <span style={{ color: '#259388' }}> {inputs.UserName}</span>
               </h3>
-
-              
             </div>
           </div>
         </div>

@@ -115,7 +115,7 @@ const Login = ({ setAuth }) => {
                 </Link> */}
 
                 <Link
-                  to="/signup_login/register/"
+                  to="/register/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',

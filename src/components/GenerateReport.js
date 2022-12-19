@@ -247,7 +247,7 @@ const GenerateReport = ({ setAuth, history }) => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link
-                  to="/signup_login/dashboard/AddPatients"
+                  to="/dashboard/AddPatients/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',

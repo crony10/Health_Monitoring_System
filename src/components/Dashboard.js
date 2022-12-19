@@ -131,7 +131,7 @@ const Dashboard = ({ props }) => {
 
                   <div className="m-3 pt-5">
                     <Link
-                      to="/signup_login/dashboard/ShowHospitalProfile"
+                      to="/dashboard/ShowHospitalProfile/"
                       className="btn text-light btn-lg text-sm-start rounded-pill"
                       style={{
                         background: '#35CBBD',
@@ -142,7 +142,7 @@ const Dashboard = ({ props }) => {
                   </div>
                   <div className="m-3">
                     <Link
-                      to="/signup_login/dashboard/ShowPatients"
+                      to="/dashboard/ShowPatients/"
                       className="btn text-light btn-lg text-sm-start rounded-pill"
                       style={{
                         background: '#35CBBD',
@@ -153,7 +153,7 @@ const Dashboard = ({ props }) => {
                   </div>
                   <div className="m-3">
                     <Link
-                      to="/signup_login/dashboard/GenerateReport"
+                      to="/dashboard/GenerateReport/"
                       className="btn text-light btn-lg text-sm-start rounded-pill"
                       style={{
                         background: '#35CBBD',
@@ -165,7 +165,7 @@ const Dashboard = ({ props }) => {
 
                   <div className="m-3">
                     <Link
-                      to="/signup_login/dashboard/AddPatients"
+                      to="/dashboard/AddPatients/"
                       className="btn text-light btn-lg text-sm-start rounded-pill"
                       style={{
                         background: '#35CBBD',

@@ -108,7 +108,7 @@ const AddPatients = ({ setAuth }) => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link
-                  to="/signup_login/dashboard/ShowPatients"
+                  to="/dashboard/ShowPatients/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',

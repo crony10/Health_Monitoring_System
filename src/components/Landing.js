@@ -28,7 +28,7 @@ const Landing = () => {
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
                   <Link
-                    to="/signup_login/login/"
+                    to="/login/"
                     className="btn text-light btn-lg text-sm-start rounded-pill"
                     style={{
                       background: '#35CBBD',
@@ -40,7 +40,7 @@ const Landing = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to="/signup_login/register/"
+                    to="/register/"
                     className="btn text-light btn-lg text-sm-start rounded-pill"
                     style={{
                       background: '#35CBBD',

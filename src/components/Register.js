@@ -114,7 +114,7 @@ const Register = ({ setAuth }) => {
                 </Link> */}
 
                 <Link
-                  to="/signup_login/login/"
+                  to="/login/"
                   className="btn text-light btn-lg text-sm-start rounded-pill"
                   style={{
                     background: '#35CBBD',

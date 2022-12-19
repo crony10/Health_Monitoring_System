@@ -78,7 +78,7 @@ function App() {
                   !isAuthenticated ? (
                     <Landing {...props} />
                   ) : (
-                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                    <Redirect to="/dashboard/" setAuth={setAuth} />
                   )
                 }
               />
@@ -89,96 +89,96 @@ function App() {
                   !isAuthenticated ? (
                     <Temp {...props} />
                   ) : (
-                    <Redirect to="/signup_login/dashboard" setAuth={setAuth}  />
+                    <Redirect to="/dashboard" setAuth={setAuth}  />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/login/"
+                path="/login/"
                 render={(props) =>
                   !isAuthenticated ? (
                     <Login {...props} setAuth={setAuth} userId={userId} />
                   ) : (
-                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                    <Redirect to="/dashboard/" setAuth={setAuth} />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/register/"
+                path="/register/"
                 render={(props) =>
                   !isAuthenticated ? (
                     <Register {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/dashboard" setAuth={setAuth} />
+                    <Redirect to="/dashboard/" setAuth={setAuth} />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/dashboard/"
+                path="/dashboard/"
                 render={(props) =>
                   isAuthenticated ? (
                     <Dashboard {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/login" />
+                    <Redirect to="/login/" />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/dashboard/ShowHospitalProfile"
+                path="/dashboard/ShowHospitalProfile/"
                 render={(props) =>
                   isAuthenticated ? (
                     <ShowHospitalProfile {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/login" />
+                    <Redirect to="/login/" />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/dashboard/AddPatients"
+                path="/dashboard/AddPatients"
                 render={(props) =>
                   isAuthenticated ? (
                     <AddPatients {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/login" />
+                    <Redirect to="/login" />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/dashboard/GenerateReport"
+                path="/dashboard/GenerateReport"
                 render={(props) =>
                   isAuthenticated ? (
                     <GenerateReport {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/login" />
+                    <Redirect to="/login" />
                   )
                 }
               />
               <Route
                 exact
-                path="/signup_login/dashboard/ShowPatients/"
+                path="/dashboard/ShowPatients/"
                 render={(props) =>
                   isAuthenticated ? (
                     <ShowPatients {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/login" />
+                    <Redirect to="/login" />
                   )
                 }
               />
 
               <Route
                 exact
-                path="/signup_login/dashboard/ShowPatientDetails/"
+                path="/dashboard/ShowPatientDetails/"
                 render={(props) =>
                   isAuthenticated ? (
                     <ShowPatientDetails {...props} setAuth={setAuth} />
                   ) : (
-                    <Redirect to="/signup_login/login" />
+                    <Redirect to="/login" />
                   )
                 }
               />
